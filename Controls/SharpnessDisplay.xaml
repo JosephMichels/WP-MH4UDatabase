@@ -1,0 +1,57 @@
+﻿<UserControl
+    x:Class="MH4U_Database.Controls.SharpnessDisplay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MH4U_Database.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="sharpnessControl"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:SharpnessWidthConverter x:Key="SharpnessWidthConverter"/>
+    </UserControl.Resources>
+    <Grid Background="#FF404040" Height="Auto">
+        <StackPanel Margin="1">
+            <Grid Margin="1" Height="{Binding Path=SharpnessHeight,ElementName=sharpnessControl}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Red,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Orange,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Yellow,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Green,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Blue,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.White,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Purple,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Black,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.Column="0" Fill="Red" StrokeThickness="0" />
+                <Rectangle Grid.Column="1" Fill="Orange" StrokeThickness="0" />
+                <Rectangle Grid.Column="2" Fill="Yellow" StrokeThickness="0"/>
+                <Rectangle Grid.Column="3" Fill="LimeGreen" StrokeThickness="0"/>
+                <Rectangle Grid.Column="4" Fill="#FF165EDD" StrokeThickness="0"/>
+                <Rectangle Grid.Column="5" Fill="White" StrokeThickness="0"/>
+                <Rectangle Grid.Column="6" Fill="Purple" StrokeThickness="0"/>
+                <Rectangle Grid.Column="7" Fill="Black" StrokeThickness="0"/>
+            </Grid>
+            <Grid Margin="1" Height="{Binding SharpnessHeight,ElementName=sharpnessControl}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Red1,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Orange1,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Yellow1,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Green1,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Blue1,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.White1,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Purple1,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                    <ColumnDefinition Width="{Binding Path=Sharpness.Black1,ElementName=sharpnessControl,Converter={StaticResource SharpnessWidthConverter}}"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.Column="0" Fill="Red" StrokeThickness="0" />
+                <Rectangle Grid.Column="1" Fill="Orange" StrokeThickness="0" />
+                <Rectangle Grid.Column="2" Fill="Yellow" StrokeThickness="0"/>
+                <Rectangle Grid.Column="3" Fill="LimeGreen" StrokeThickness="0"/>
+                <Rectangle Grid.Column="4" Fill="#FF165EDD" StrokeThickness="0"/>
+                <Rectangle Grid.Column="5" Fill="White" StrokeThickness="0"/>
+                <Rectangle Grid.Column="6" Fill="Purple" StrokeThickness="0"/>
+                <Rectangle Grid.Column="7" Fill="Black" StrokeThickness="0"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>
