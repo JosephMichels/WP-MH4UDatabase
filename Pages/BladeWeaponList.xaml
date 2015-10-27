@@ -14,6 +14,112 @@
         <controls:RarityColorConverter x:Key="RarityColorConverter"/>
         <controls:IntegerVisibilityConverter x:Key="IntegerVisibilityConverter"/>
         <controls:ElementImageConverter x:Key="ElementImageConverter"/>
+      <DataTemplate x:Key="BladeWeaponTemplate">
+        <Grid Margin="{Binding Weapon.tree_depth,Converter={StaticResource MarginConverter}}">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+          </Grid.ColumnDefinitions>
+          <Rectangle Width="5" Margin="4,1,0,1" Height="80" Fill="{Binding Weapon.item_rarity,Converter={StaticResource RarityColorConverter}}"/>
+          <StackPanel Grid.Column="1" Margin="5,0,0,0">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="{Binding Weapon.item_name}" Style="{StaticResource BodyTextBlockStyle}"/>
+              <TextBlock Text="&#x2605;" Margin="4,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Visibility="{Binding Weapon.creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="DMG: "/>
+              <TextBlock Text="{Binding Weapon.attack}"/>
+              <StackPanel Orientation="Horizontal" Visibility="{Binding Weapon.element_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                <Image Width="16" Source="{Binding Weapon.element,Converter={StaticResource ElementImageConverter}}"/>
+                <TextBlock Text="{Binding Weapon.element_attack}"/>
+              </StackPanel>
+              <StackPanel Orientation="Horizontal" Visibility="{Binding Weapon.element_2_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                <TextBlock Text="/"/>
+                <Image Width="16" Source="{Binding Weapon.element_2,Converter={StaticResource ElementImageConverter}}"/>
+                <TextBlock Text="{Binding Weapon.element_2_attack}"/>
+              </StackPanel>
+              <StackPanel Margin="4,0,0,0" Orientation="Horizontal" Visibility="{Binding Weapon.awaken_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                <TextBlock Text="("/>
+                <Image Width="16" Source="{Binding Weapon.awaken,Converter={StaticResource ElementImageConverter}}"/>
+                <TextBlock Text="{Binding Weapon.awaken_attack}"/>
+                <TextBlock Text=")"/>
+              </StackPanel>
+            </StackPanel>
+          </StackPanel>
+          <StackPanel Grid.Column="2" Margin="0,10,0,0">
+            <controls:SharpnessDisplay Sharpness="{Binding Weapon.DefaultSharpness}" SharpnessHeight="4"/>
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <StackPanel Grid.Column="0" Orientation="Horizontal" Visibility="{Binding Weapon.defense,Converter={StaticResource IntegerVisibilityConverter}}">
+                <TextBlock Text="D:" Margin="0,0,0,0"/>
+                <TextBlock Text="{Binding Weapon.defense}"/>
+              </StackPanel>
+
+              <TextBlock Grid.Column="1" Text="{Binding Weapon.affinity}" TextAlignment="Center"/>
+              <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="{Binding Weapon.slots}"/>
+            </Grid>
+            <TextBlock HorizontalAlignment="Right" Text="{Binding SpecialString}" Margin="0,0,4,0"/>
+          </StackPanel>
+        </Grid>
+      </DataTemplate>
+      <DataTemplate x:Key="BowWeaponTemplate">
+        <Grid Margin="{Binding Weapon.tree_depth,Converter={StaticResource MarginConverter}}">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Rectangle Width="5" Margin="4,1,0,1" Height="80" Fill="{Binding Weapon.item_rarity,Converter={StaticResource RarityColorConverter}}"/>
+          <StackPanel Grid.Column="1" Margin="5,0,0,0">
+            <!-- Row 1 -->
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <!-- Weapon Name -->
+              <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="{Binding Weapon.item_name}" Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Text="&#x2605;" Margin="4,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Visibility="{Binding Weapon.creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
+              </StackPanel>
+              <!-- Coating Images -->
+            </Grid>
+            <!-- Row 2 -->
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <!-- Weapon Damage-->
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="DMG: "/>
+                <TextBlock Text="{Binding Weapon.attack}"/>
+                <StackPanel Orientation="Horizontal" Visibility="{Binding Weapon.element_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                  <Image Width="16" Source="{Binding Weapon.element,Converter={StaticResource ElementImageConverter}}"/>
+                  <TextBlock Text="{Binding Weapon.element_attack}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Visibility="{Binding Weapon.element_2_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                  <TextBlock Text="/"/>
+                  <Image Width="16" Source="{Binding Weapon.element_2,Converter={StaticResource ElementImageConverter}}"/>
+                  <TextBlock Text="{Binding Weapon.element_2_attack}"/>
+                </StackPanel>
+                <StackPanel Margin="4,0,0,0" Orientation="Horizontal" Visibility="{Binding Weapon.awaken_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                  <TextBlock Text="("/>
+                  <Image Width="16" Source="{Binding Weapon.awaken,Converter={StaticResource ElementImageConverter}}"/>
+                  <TextBlock Text="{Binding Weapon.awaken_attack}"/>
+                  <TextBlock Text=")"/>
+                </StackPanel>
+              </StackPanel>
+              <!-- Slots -->
+              <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="{Binding Weapon.slots}"/>
+            </Grid>
+          </StackPanel>
+        </Grid>
+      </DataTemplate>
     </Page.Resources>
     <Grid x:Name="LayoutRoot">
 
@@ -37,69 +143,15 @@
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="10,9.5,19,0">
             <controls:StrechItemsListView x:Name="listView"
-                ItemsSource="{Binding WeaponTree}"
+                                          ItemsSource="{Binding WeaponTree}"
                                           IsItemClickEnabled="True"
-                                          ItemClick="WeaponClicked">
+                                          ItemClick="WeaponClicked"
+                                          ItemTemplate="{StaticResource BladeWeaponTemplate}">
                 <controls:StrechItemsListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     </Style>
                 </controls:StrechItemsListView.ItemContainerStyle>
-                <controls:StrechItemsListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="{Binding Weapon.tree_depth,Converter={StaticResource MarginConverter}}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-                            <Rectangle Width="5" Margin="4,1,0,1" Height="80" Fill="{Binding Weapon.item_rarity,Converter={StaticResource RarityColorConverter}}"/>
-                            <StackPanel Grid.Column="1" Margin="5,0,0,0">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Weapon.item_name}" Style="{StaticResource BodyTextBlockStyle}"/>
-                                    <TextBlock Text="&#x2605;" Margin="4,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Visibility="{Binding Weapon.creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="DMG: "/>
-                                    <TextBlock Text="{Binding Weapon.attack}"/>
-                                    <StackPanel Orientation="Horizontal" Visibility="{Binding Weapon.element_attack,Converter={StaticResource IntegerVisibilityConverter}}">
-                                        <Image Width="16" Source="{Binding Weapon.element,Converter={StaticResource ElementImageConverter}}"/>
-                                        <TextBlock Text="{Binding Weapon.element_attack}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Visibility="{Binding Weapon.element_2_attack,Converter={StaticResource IntegerVisibilityConverter}}">
-                                        <TextBlock Text="/"/>
-                                        <Image Width="16" Source="{Binding Weapon.element_2,Converter={StaticResource ElementImageConverter}}"/>
-                                        <TextBlock Text="{Binding Weapon.element_2_attack}"/>
-                                    </StackPanel>
-                                    <StackPanel Margin="4,0,0,0" Orientation="Horizontal" Visibility="{Binding Weapon.awaken_attack,Converter={StaticResource IntegerVisibilityConverter}}">
-                                        <TextBlock Text="("/>
-                                        <Image Width="16" Source="{Binding Weapon.awaken,Converter={StaticResource ElementImageConverter}}"/>
-                                        <TextBlock Text="{Binding Weapon.awaken_attack}"/>
-                                        <TextBlock Text=")"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Margin="0,10,0,0">
-                                <controls:SharpnessDisplay Sharpness="{Binding Weapon.DefaultSharpness}" SharpnessHeight="4"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0" Orientation="Horizontal" Visibility="{Binding Weapon.defense,Converter={StaticResource IntegerVisibilityConverter}}">
-                                        <TextBlock Text="D:" Margin="0,0,0,0"/>
-                                        <TextBlock Text="{Binding Weapon.defense}"/>
-                                    </StackPanel>
-
-                                    <TextBlock Grid.Column="1" Text="{Binding Weapon.affinity}" TextAlignment="Center"/>
-                                    <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="{Binding Weapon.slots}"/>
-                                </Grid>
-                                <TextBlock HorizontalAlignment="Right" Text="{Binding SpecialString}" Margin="0,0,4,0"/>
-                            </StackPanel>
-                        </Grid>
-                    </DataTemplate>
-                </controls:StrechItemsListView.ItemTemplate>
             </controls:StrechItemsListView>
         </Grid>
     </Grid>

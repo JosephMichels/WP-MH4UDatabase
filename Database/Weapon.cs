@@ -64,10 +64,42 @@ namespace MH4U_Database.Database
         }
         public string phial { get; set; }
         public string charges { get; set; }
+        public string recoil { get; set; }
+        public string coatings { get; set; }
         public int num_slots { get; set; }
         public int tree_depth { get; set; }
         public int final { get; set; }
         public string shelling_type { get; set; }
+		
+		public string chargesString{
+			get
+			{
+                string[] c = charges.Split('|');
+                string ret = string.Empty;
+                for(int i = 0; i < c.Length; i++)
+                {
+                    if (c[i].Contains('*'))
+                        ret += "(" + c[i].Replace('L', "").Replace('*', "") + ")";
+                    else
+                        ret += c[i].Replace('L', "");
+
+                    //Add a separator if not the last element
+                    if (i != c.Length - 1)
+                        ret += '\u2022';
+                }
+                return ret;
+			}
+		}
+
+        //Bow Coatings
+        public bool coating_power { get { return coatings.Contains("Power"); } }
+        public bool coating_poison { get { return coatings.Contains("Poison"); } }
+        public bool coating_para { get { return coatings.Contains("Para"); } }
+        public bool coating_sleep { get { return coatings.Contains("Sleep"); } }
+        public bool coating_range { get { return coatings.Contains("C. Range"); } }
+        public bool coating_paint { get { return coatings.Contains("Paint"); } }
+        public bool coating_exhaust { get { return coatings.Contains("Exhaust"); } }
+        public bool coating_blast { get { return coatings.Contains("Blast"); } }
 
         //Variables from item
         public string item_name { get; set; }
@@ -138,5 +170,8 @@ namespace MH4U_Database.Database
             _defaultSharpness.White1 = s2[5];
             _defaultSharpness.Purple1 = s2[6];
         }
+		
+		
+		
     }
 }
