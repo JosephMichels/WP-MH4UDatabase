@@ -1,0 +1,60 @@
+﻿<local:BasePage
+    x:Class="MH4U_Database.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MH4U_Database.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="MH4U DATABASE" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="sections" Margin="0,-6.5,0,6.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <ListView ItemClick="OptionSelected" IsItemClickEnabled="True">
+                <StackPanel Name="monsters" Orientation="Horizontal" Margin="0,5,0,5">
+                    <Image Width="50" Margin="0,0,5,0" Source="/Assets/icons_items/Book-White.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Monsters" Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Name="items" Orientation="Horizontal" Margin="0,5,0,5">
+                    <Image Width="50" Margin="0,0,5,0" Source="/Assets/icons_items/Liquid-White.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Items" Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Name="weapons" Orientation="Horizontal" Margin="0,5,0,5">
+                    <Image Width="50" Margin="0,0,5,0" Source="/Assets/icons_items/charge_blade1.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Weapons" Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Name="armor" Orientation="Horizontal" Margin="0,5,0,5">
+                    <Image Width="50" Margin="0,0,5,0" Source="/Assets/icons_items/body1.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Armor" Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Name="skills" Orientation="Horizontal" Margin="0,5,0,5">
+                    <Image Width="50" Margin="0,0,5,0" Source="/Assets/icons_items/Jewel-White.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Skills" Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Name="quests" Orientation="Horizontal" Margin="0,5,0,5">
+                    <Image Width="50" Margin="0,0,5,0" Source="/Assets/icons_items/Quest-Icon-White.png"/>
+                    <TextBlock VerticalAlignment="Center" Text="Quests" Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                </StackPanel>
+            </ListView>
+        </Grid>
+    </Grid>
+</local:BasePage>

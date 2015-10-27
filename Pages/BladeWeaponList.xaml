@@ -1,0 +1,119 @@
+﻿<local:BasePage
+    x:Class="MH4U_Database.Pages.BladeWeaponList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MH4U_Database.Pages"
+    xmlns:controls="using:MH4U_Database.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <controls:MarginConverter x:Key="MarginConverter"/>
+        <controls:RarityColorConverter x:Key="RarityColorConverter"/>
+        <controls:IntegerVisibilityConverter x:Key="IntegerVisibilityConverter"/>
+        <controls:ElementImageConverter x:Key="ElementImageConverter"/>
+    </Page.Resources>
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="MH4U DATABASE" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="{Binding WeaponType}" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="10,9.5,19,0">
+            <controls:StrechItemsListView x:Name="listView"
+                ItemsSource="{Binding WeaponTree}"
+                                          IsItemClickEnabled="True"
+                                          ItemClick="WeaponClicked">
+                <controls:StrechItemsListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </controls:StrechItemsListView.ItemContainerStyle>
+                <controls:StrechItemsListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="{Binding Weapon.tree_depth,Converter={StaticResource MarginConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Width="5" Margin="4,1,0,1" Height="80" Fill="{Binding Weapon.item_rarity,Converter={StaticResource RarityColorConverter}}"/>
+                            <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Weapon.item_name}" Style="{StaticResource BodyTextBlockStyle}"/>
+                                    <TextBlock Text="&#x2605;" Margin="4,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Visibility="{Binding Weapon.creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="DMG: "/>
+                                    <TextBlock Text="{Binding Weapon.attack}"/>
+                                    <StackPanel Orientation="Horizontal" Visibility="{Binding Weapon.element_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                                        <Image Width="16" Source="{Binding Weapon.element,Converter={StaticResource ElementImageConverter}}"/>
+                                        <TextBlock Text="{Binding Weapon.element_attack}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Visibility="{Binding Weapon.element_2_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                                        <TextBlock Text="/"/>
+                                        <Image Width="16" Source="{Binding Weapon.element_2,Converter={StaticResource ElementImageConverter}}"/>
+                                        <TextBlock Text="{Binding Weapon.element_2_attack}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="4,0,0,0" Orientation="Horizontal" Visibility="{Binding Weapon.awaken_attack,Converter={StaticResource IntegerVisibilityConverter}}">
+                                        <TextBlock Text="("/>
+                                        <Image Width="16" Source="{Binding Weapon.awaken,Converter={StaticResource ElementImageConverter}}"/>
+                                        <TextBlock Text="{Binding Weapon.awaken_attack}"/>
+                                        <TextBlock Text=")"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="0,10,0,0">
+                                <controls:SharpnessDisplay Sharpness="{Binding Weapon.DefaultSharpness}" SharpnessHeight="4"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal" Visibility="{Binding Weapon.defense,Converter={StaticResource IntegerVisibilityConverter}}">
+                                        <TextBlock Text="D:" Margin="0,0,0,0"/>
+                                        <TextBlock Text="{Binding Weapon.defense}"/>
+                                    </StackPanel>
+
+                                    <TextBlock Grid.Column="1" Text="{Binding Weapon.affinity}" TextAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="{Binding Weapon.slots}"/>
+                                </Grid>
+                                <TextBlock HorizontalAlignment="Right" Text="{Binding SpecialString}" Margin="0,0,4,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </controls:StrechItemsListView.ItemTemplate>
+            </controls:StrechItemsListView>
+        </Grid>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="homeAppBarButton" x:Name="AddAppBarButton" Label="home" Icon="Home" Click="AppBarHomeClicked" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="SecondaryButton1" x:Name="SecondaryButton1" Label="Monsters" Click="AppBarMonstersClicked" />
+                <AppBarButton x:Uid="SecondaryButton2" x:Name="SecondaryButton2" Label="Items" Click="AppBarItemsClicked" />
+                <AppBarButton x:Uid="SecondaryButton3" x:Name="SecondaryButton3" Label="Weapons" Click="AppBarWeaponsClicked" />
+                <AppBarButton x:Uid="SecondaryButton4" x:Name="SecondaryButton4" Label="Armor" Click="AppBarArmorClicked"/>
+                <AppBarButton x:Uid="SecondaryButton5" x:Name="SecondaryButton5" Label="Skills" Click="AppBarSkillsClicked" />
+                <AppBarButton x:Uid="SecondaryButton6" x:Name="SecondaryButton6" Label="Quests" Click="AppBarQuestsClicked" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</local:BasePage>
