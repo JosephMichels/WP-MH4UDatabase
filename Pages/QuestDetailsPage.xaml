@@ -1,0 +1,194 @@
+﻿<local:BasePage
+    x:Class="MH4U_Database.Pages.QuestDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MH4U_Database.Pages"
+    xmlns:controls="using:MH4U_Database.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <controls:UppercaseConverter x:Key="UppercaseConverter"/>
+        <DataTemplate x:Key="rewardTemplate">
+            <Grid Margin="0,4,0,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Margin="5,0,5,0" Width="40" Height="40" Source="{Binding item_icon_path}"/>
+                <StackPanel Margin="5,0,0,0" VerticalAlignment="Center" Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="{Binding item_name}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock  Margin="6,3,0,0" Text="x" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                    <TextBlock Margin="0,3,0,0" Text="{Binding stack_size}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                    <!--<TextBlock Margin="0,0,0,0" Text="{Binding condition}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>-->
+                </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center"  Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding percentage}"/>
+                    <TextBlock VerticalAlignment="Center"  Margin="2,0,10,0" Style="{StaticResource BodyTextBlockStyle}" Text="%"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="rewardHeaderTemplate">
+            <TextBlock Text="{Binding Slot,Converter={StaticResource UppercaseConverter}}" FontSize="35" FontWeight="Bold" />
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Pivot Title="{Binding Quest.name,Converter={StaticResource UppercaseConverter}}" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True">
+            <PivotItem
+                Margin="19,12,0,0"
+                Header="info"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <!--Double line list with text wrapping-->
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Goal:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding Quest.goal}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Location:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Quest.location_name}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Stars:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Quest.stars}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Fee:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Quest.fee}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Reward:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Quest.reward}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="HRP:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Quest.hrp}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Sub Goal:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Quest.sub_goal}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Sub Reward:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Quest.sub_reward}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Sub HRP:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Quest.sub_hrp}" TextAlignment="Left"/>
+                    </Grid>
+                </StackPanel>
+            </PivotItem>
+            <PivotItem
+                Margin="19,12,0,0"
+                Header="monsters"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <ListView HorizontalContentAlignment="Stretch" 
+                          ItemsSource="{Binding Monsters}"
+                          IsItemClickEnabled="True"
+                          ItemClick="MonsterClicked">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,4,0,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Margin="5,0,5,0" Width="50" Height="50" Source="{Binding icon_path}"/>
+                                <!--<StackPanel Margin="5,0,0,0" VerticalAlignment="Center" Grid.Column="1">-->
+                                    <TextBlock VerticalAlignment="Center" Grid.Column="1" Margin="5,0,0,0" Text="{Binding name}" Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                                    <!--<StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding rank}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                                        <TextBlock Margin="4,0,0,0" Text="{Binding condition}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>-->
+                                <!--<StackPanel Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock VerticalAlignment="Center"  Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding percentage}"/>
+                                    <TextBlock VerticalAlignment="Center"  Margin="0,0,10,0" Style="{StaticResource BodyTextBlockStyle}" Text="%"/>
+                                </StackPanel>-->
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+            <PivotItem
+                Margin="19,12,0,0"
+                Header="rewards"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <PivotItem.Resources>
+                    <CollectionViewSource x:Key="rewards" IsSourceGrouped="True" Source="{Binding Rewards}"/>
+                </PivotItem.Resources>
+                <ListView HorizontalContentAlignment="Stretch" 
+                          ItemsSource="{Binding Source={StaticResource rewards}}" 
+                          ItemTemplate="{StaticResource rewardTemplate}"
+                          IsItemClickEnabled="True"
+                          ItemClick="ItemClicked">
+                    <ListView.GroupStyle>
+                        <GroupStyle HeaderTemplate="{StaticResource rewardHeaderTemplate}"/>
+                    </ListView.GroupStyle>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="homeAppBarButton" x:Name="AddAppBarButton" Label="home" Icon="Home" Click="AppBarHomeClicked" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="SecondaryButton1" x:Name="SecondaryButton1" Label="Monsters" Click="AppBarMonstersClicked" />
+                <AppBarButton x:Uid="SecondaryButton2" x:Name="SecondaryButton2" Label="Items" Click="AppBarItemsClicked" />
+                <AppBarButton x:Uid="SecondaryButton3" x:Name="SecondaryButton3" Label="Weapons" Click="AppBarWeaponsClicked" />
+                <AppBarButton x:Uid="SecondaryButton4" x:Name="SecondaryButton4" Label="Armor" Click="AppBarArmorClicked"/>
+                <AppBarButton x:Uid="SecondaryButton5" x:Name="SecondaryButton5" Label="Skills" Click="AppBarSkillsClicked" />
+                <AppBarButton x:Uid="SecondaryButton6" x:Name="SecondaryButton6" Label="Quests" Click="AppBarQuestsClicked" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</local:BasePage>
