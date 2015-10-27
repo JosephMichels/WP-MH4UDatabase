@@ -1,0 +1,182 @@
+﻿<Page
+    x:Class="MH4U_Database.Pages.ArmorDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MH4U_Database.Pages"
+    xmlns:controls="using:MH4U_Database.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <controls:UppercaseConverter x:Key="UppercaseConverter"/>
+    </Page.Resources>
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <CommonNavigationTransitionInfo IsStaggeringEnabled="True"/>
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+    <Grid>
+        <Pivot Title="{Binding Armor.item_name,Converter={StaticResource UppercaseConverter}}" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True">
+            <!--Pivot item one-->
+            <PivotItem
+                Margin="19,12,0,0"
+                Header="info"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <!--Double line list with text wrapping-->
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                        <Image Margin="5,0,5,0" Width="50" Height="50" Source="{Binding Armor.icon_path}"/>
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource GroupHeaderTextBlockStyle}" Margin="5,0,0,0" Text="{Binding Armor.item_name}" FontWeight="Bold"/>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Part:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding Armor.slot}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Type:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding Armor.hunter_type}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Rarity:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Armor.rarity}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Defense:" TextAlignment="Left"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="{Binding Armor.defense}" TextAlignment="Left"/>
+                            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,5,0" TextWrapping="Wrap" Text="-" TextAlignment="Left"/>
+                            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Armor.max_defense}" TextAlignment="Left"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Slots:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Armor.slots}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Fire:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Armor.fire_res}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Water:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Armor.water_res}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Ice:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Armor.ice_res}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Thunder:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Armor.thunder_res}" TextAlignment="Left"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Dragon:" TextAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Armor.dragon_res}" TextAlignment="Left"/>
+                    </Grid>
+                </StackPanel>
+            </PivotItem>
+            <PivotItem
+                Margin="19,12,0,0"
+                Header="components"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <ListView HorizontalContentAlignment="Stretch" 
+                          ItemsSource="{Binding Components}" 
+                          ItemClick="ComponentSelected"
+                          IsItemClickEnabled="True">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,4,0,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Margin="5,0,5,0" Width="50" Height="50" Source="{Binding comp_item_icon_path}"/>
+                                <TextBlock Grid.Column="1"  VerticalAlignment="Center" Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding comp_item_name}"/>
+                                <TextBlock Grid.Column="2"  VerticalAlignment="Center" TextAlignment="Right" Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding type}"/>
+                                <TextBlock Grid.Column="3"  VerticalAlignment="Center" TextAlignment="Right" Margin="5,0,5,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding quantity}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+            <PivotItem
+                Margin="19,12,0,0"
+                Header="skills"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <ListView HorizontalContentAlignment="Stretch" 
+                          ItemsSource="{Binding Skills}" 
+                          ItemClick="ComponentSelected"
+                          IsItemClickEnabled="True">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,4,0,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"  VerticalAlignment="Center" Margin="5,0,0,0" Style="{ThemeResource ListViewItemTextBlockStyle}" Text="{Binding skill_tree_name}"/>
+                                <TextBlock Grid.Column="1"  VerticalAlignment="Center" TextAlignment="Center" Margin="5,0,0,0" Style="{ThemeResource ListViewItemTextBlockStyle}" Text="{Binding point_value_string}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>
