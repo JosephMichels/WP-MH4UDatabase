@@ -13,21 +13,21 @@ Uses the same sqlite3 database as the android project, but was modified slightly
 
 ### Project Layout
 
-Database
+**Database**
   - Contains classes for data objects
   - Contains database queries
 
-Controls
+**Controls**
   - Contains custom controls
 
-Converters
+**Converters**
   - Contains IValueConverters for XAML binding
 
-TemplateSelectors
+**TemplateSelectors**
   - Contains template selectors for item collections
 
-Pages
+**Pages**
   - Contains the page XAML
 
-ViewModel
+**ViewModel**
   - Contains the ViewModels for each page
