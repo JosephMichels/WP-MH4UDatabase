@@ -17,13 +17,21 @@ namespace MH4U_Database.Controls
         {
             if (value == null)
                 return Visibility.Collapsed;
-            else
+            else if(value is int)
             {
                 int v = (int)value;
                 if (v == 0)
                     return Visibility.Collapsed;
                 return Visibility.Visible;
             }
+            else if(value is bool)
+            {
+                bool v = (bool)value;
+                if (v)
+                    return Visibility.Visible;
+                return Visibility.Collapsed;
+            }
+            return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string s)

@@ -79,9 +79,9 @@ namespace MH4U_Database.Database
                 for(int i = 0; i < c.Length; i++)
                 {
                     if (c[i].Contains('*'))
-                        ret += "(" + c[i].Replace('L', "").Replace('*', "") + ")";
+                        ret += "(" + c[i].Replace("L", "").Replace("*", "") + ")";
                     else
-                        ret += c[i].Replace('L', "");
+                        ret += c[i].Replace("L", "");
 
                     //Add a separator if not the last element
                     if (i != c.Length - 1)
@@ -134,6 +134,9 @@ namespace MH4U_Database.Database
 
         void SetupSharpness()
         {
+            if (sharpness == null || sharpness.Length == 0)
+                return;
+
             //Create the actual sharpness objects
             int[] s1 = new int[7];
             int[] s2 = new int[7];

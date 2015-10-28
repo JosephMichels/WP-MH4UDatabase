@@ -17,10 +17,10 @@ namespace MH4U_Database.TemplateSelectors
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
-            Weapon w = (Weapon)item;
-            if (w.wtype.Equals("Bow"))
+            WeaponTreeEntry w = (WeaponTreeEntry)item;
+            if (w.Weapon.wtype.Equals("Bow"))
                 return BowTemplate;
-            else if (w.wtype.Equals("Light Bowgun") || w.wtype.Equals("Heavy Bowgun"))
+            else if (w.Weapon.wtype.Equals("Light Bowgun") || w.Weapon.wtype.Equals("Heavy Bowgun"))
                 return BowGunTemplate;
             return BladeTemplate;
         }
