@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MH4U_Database.Pages"
     xmlns:controls="using:MH4U_Database.Controls"
+    xmlns:converters="using:MH4U_Database.Converters"
     xmlns:selectors="using:MH4U_Database.TemplateSelectors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -15,6 +16,7 @@
         <controls:RarityColorConverter x:Key="RarityColorConverter"/>
         <controls:IntegerVisibilityConverter x:Key="IntegerVisibilityConverter"/>
         <controls:ElementImageConverter x:Key="ElementImageConverter"/>
+        <converters:AffinityVisibilityConverter x:Key="AffinityConverter"/>
         <DataTemplate x:Key="BladeWeaponTemplate">
         <Grid Margin="{Binding Weapon.tree_depth,Converter={StaticResource MarginConverter}}">
           <Grid.ColumnDefinitions>
@@ -61,7 +63,7 @@
                 <TextBlock Text="{Binding Weapon.defense}"/>
               </StackPanel>
 
-              <TextBlock Grid.Column="1" Text="{Binding Weapon.affinity}" TextAlignment="Center"/>
+              <TextBlock Grid.Column="1" Text="{Binding Weapon.affinity}" TextAlignment="Center" Visibility="{Binding Weapon.affinity,Converter={StaticResource AffinityConverter}}"/>
               <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="{Binding Weapon.slots}"/>
             </Grid>
             <TextBlock HorizontalAlignment="Right" Text="{Binding SpecialString}" Margin="0,0,4,0"/>
@@ -132,7 +134,7 @@
                             <TextBlock Text="{Binding Weapon.defense}"/>
                         </StackPanel>
 
-                        <TextBlock Grid.Column="2" Text="{Binding Weapon.affinity}" TextAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Weapon.affinity}" TextAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Weapon.affinity,Converter={StaticResource AffinityConverter}}"/>
                         <!-- Slots -->
                         <TextBlock Grid.Column="3" HorizontalAlignment="Right" Text="{Binding Weapon.slots}"/>
                     </Grid>

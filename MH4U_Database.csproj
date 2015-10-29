@@ -149,6 +149,7 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Converters\AffinityVisibilityConverter.cs" />
     <Compile Include="Converters\ElementImageConverter.cs" />
     <Compile Include="Converters\IntegerVisibilityConverter.cs" />
     <Compile Include="Converters\MarginConverter.cs" />
