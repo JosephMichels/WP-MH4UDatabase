@@ -9,7 +9,7 @@ using Windows.UI.Xaml;
 namespace MH4U_Database.Controls
 {
     /// <summary>
-    /// Converts an integer to Visibility where 0 is considered not visible.
+    /// Converts an integer/boolean/string to Visibility where null,0,false,and 0 length string are all considered not visible.
     /// </summary>
     class IntegerVisibilityConverter : IValueConverter
     {
@@ -30,6 +30,12 @@ namespace MH4U_Database.Controls
                 if (v)
                     return Visibility.Visible;
                 return Visibility.Collapsed;
+            }
+            else if(value is string)
+            {
+                string v = (string)value;
+                if (v.Length == 0) return Visibility.Collapsed;
+                return Visibility.Visible;
             }
             return Visibility.Collapsed;
         }

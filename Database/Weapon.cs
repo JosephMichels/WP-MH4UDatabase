@@ -63,7 +63,25 @@ namespace MH4U_Database.Database
             }
         }
         public string phial { get; set; }
-        public string charges { get; set; }
+        public string _charges { get; set; }
+        public string charges { get { return _charges; }
+            set
+            {
+                _charges = value;
+                if (_charges.Contains('|'))
+                {
+                    string[] c = _charges.Split('|');
+                    charges1 = c.Length > 0 ? c[0] : "";
+                    charges2 = c.Length > 1 ? c[1] : "";
+                    charges3 = c.Length > 2 ? c[2] : "";
+                    charges4 = c.Length > 3 ? c[3] : "";
+                }
+                else
+                {
+                    charges1 = charges2 = charges3 = charges4 = "";
+                }
+            }
+        }
         public string recoil { get; set; }
         public string coatings { get; set; }
         public int num_slots { get; set; }
@@ -71,6 +89,7 @@ namespace MH4U_Database.Database
         public int final { get; set; }
         public string shelling_type { get; set; }
 		
+        //A bunch of charge stuff
 		public string chargesString{
 			get
 			{
@@ -90,6 +109,16 @@ namespace MH4U_Database.Database
                 return ret;
 			}
 		}
+
+        public string charges1 { get; set; }
+        public string charges2 { get; set; }
+        public string charges3 { get; set; }
+        public string charges4 { get; set; }
+
+        public string charge1_string { get { return charges1.Replace("*", ""); } }
+        public string charge2_string { get { return charges2.Replace("*", ""); } }
+        public string charge3_string { get { return charges3.Replace("*", ""); } }
+        public string charge4_string { get { return charges4.Replace("*", ""); } }
 
         //Bow Coatings
         public bool coating_power { get { return coatings.Contains("Power"); } }
