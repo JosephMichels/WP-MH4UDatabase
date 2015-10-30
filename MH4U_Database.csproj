@@ -232,7 +232,6 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ItemDetailsViewModel.cs" />
     <Compile Include="ViewModel\ItemListViewModel.cs" />
-    <Compile Include="ViewModel\MainHubViewModel.cs" />
     <Compile Include="ViewModel\MonsterDetailsViewModel.cs" />
     <Compile Include="ViewModel\MonsterListViewModel.cs" />
     <Compile Include="ViewModel\QuestDetailsViewModel.cs" />
