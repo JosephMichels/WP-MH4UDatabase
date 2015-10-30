@@ -26,10 +26,16 @@ namespace MH4U_Database.Database
 
         #region Monster Queries
 
-        public static async Task<List<Monster>> GetAllMonsters()
+        public static async Task<List<Monster>> GetAllLargeMonsters()
         {
             InitializeConnection();
             return await _connection.QueryAsync<Monster>("SELECT * FROM monsters WHERE class='Boss' ORDER BY sort_name");
+        }
+
+        public static async Task<List<Monster>> GetAllSmallMonsters()
+        {
+            InitializeConnection();
+            return await _connection.QueryAsync<Monster>("SELECT * FROM monsters WHERE class='Minion' ORDER BY sort_name");
         }
 
         public static async Task<Monster> GetMonster(int id)

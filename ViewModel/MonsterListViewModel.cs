@@ -18,6 +18,17 @@ namespace MH4U_Database.ViewModel
             }
         }
 
+        public List<Monster> _smallMonsters;
+        public List<Monster> SmallMonsters
+        {
+            get { return _smallMonsters; }
+            set
+            {
+                _smallMonsters = value;
+                OnPropertyChanged("SmallMonsters");
+            }
+        }
+
         public MonsterListViewModel()
         {
             LoadData();
@@ -26,7 +37,9 @@ namespace MH4U_Database.ViewModel
         async void LoadData()
         {
             if(Monsters == null)
-                Monsters = await MHDatabaseHelper.GetAllMonsters();
+                Monsters = await MHDatabaseHelper.GetAllLargeMonsters();
+            if (SmallMonsters == null)
+                SmallMonsters = await MHDatabaseHelper.GetAllSmallMonsters();
         }
     }
 }

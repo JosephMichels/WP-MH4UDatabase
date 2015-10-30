@@ -77,7 +77,7 @@ namespace MH4U_Database.ViewModel
         public async void LoadData()
         {
             if(Monsters == null)
-                Monsters = await MHDatabaseHelper.GetAllMonsters();
+                Monsters = await MHDatabaseHelper.GetAllLargeMonsters();
             if (AllItems == null)
             {
                 _stopwatch = new Stopwatch();
