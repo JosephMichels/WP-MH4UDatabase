@@ -164,6 +164,7 @@
     <Compile Include="Database\Armor.cs" />
     <Compile Include="Database\Component.cs" />
     <Compile Include="Database\Gathering.cs" />
+    <Compile Include="Database\Habitat.cs" />
     <Compile Include="Database\HuntingReward.cs" />
     <Compile Include="Database\Item.cs" />
     <Compile Include="Database\ItemToSkillTree.cs" />

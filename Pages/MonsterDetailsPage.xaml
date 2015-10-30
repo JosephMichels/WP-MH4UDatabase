@@ -194,6 +194,36 @@
             </PivotItem>
             <PivotItem
                 Margin="8,12,0,0"
+                Header="habitat"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <ListView HorizontalContentAlignment="Stretch" 
+                          ItemsSource="{Binding Habitats}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding location_name}" Style="{StaticResource BodyTextBlockStyle}"/>
+                                <TextBlock Grid.Column="1" Text="{Binding start_area}" HorizontalAlignment="Right" Style="{StaticResource BodyTextBlockStyle}"/>
+                                <TextBlock Grid.Column="2" Text="{Binding move_area}" HorizontalAlignment="Center" Style="{StaticResource BodyTextBlockStyle}"/>
+                                <TextBlock Grid.Column="3" Text="{Binding rest_area}" Style="{StaticResource BodyTextBlockStyle}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+            <PivotItem
+                Margin="8,12,0,0"
                 Header="low-rank"
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
                 <PivotItem.Resources>

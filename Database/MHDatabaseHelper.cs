@@ -387,6 +387,19 @@ namespace MH4U_Database.Database
 
         #endregion
 
+        #region Location/Habitat Queries
+
+        public static async Task<List<Habitat>> GetHabitatForMonster(int id)
+        {
+            InitializeConnection();
+            //l - location
+            //h - monster_habitat
+            string s = @"SELECT h.*,l.name AS location_name FROM monster_habitat h LEFT OUTER JOIN locations l ON h.location_id=l._id WHERE h.monster_id=?";
+            return await _connection.QueryAsync<Habitat>(s, id);
+        }
+
+        #endregion
+
     }
 
 }

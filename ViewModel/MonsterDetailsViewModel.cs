@@ -40,6 +40,17 @@ namespace MH4U_Database.ViewModel
             }
         }
 
+        List<Habitat> _habitats;
+        public List<Habitat> Habitats
+        {
+            get { return _habitats; }
+            set
+            {
+                _habitats = value;
+                OnPropertyChanged("Habitats");
+            }
+        }
+
         public class HuntingRewardGroup : ObservableCollection<HuntingReward>
         {
             public HuntingRewardGroup(IEnumerable<HuntingReward> items) : base(items)
@@ -98,6 +109,9 @@ namespace MH4U_Database.ViewModel
                 Damages = await MHDatabaseHelper.GetMonsterDamageForMonster(id);
             if (Statuses == null)
                 Statuses = await MHDatabaseHelper.GetMonsterStatusForMonster(id);
+
+            if (Habitats == null)
+                Habitats = await MHDatabaseHelper.GetHabitatForMonster(id);
 
             //Crazy LINQ queries that get the hunting rewards grouped by condition.
             if (LowHuntingRewardGroup == null)
