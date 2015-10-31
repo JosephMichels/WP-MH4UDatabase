@@ -88,6 +88,8 @@ namespace MH4U_Database.Database
         public int tree_depth { get; set; }
         public int final { get; set; }
         public string shelling_type { get; set; }
+        public string reload_speed { get; set; }
+        public string deviation { get; set; }
 		
         //A bunch of charge stuff
 		public string chargesString{

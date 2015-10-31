@@ -135,7 +135,7 @@ namespace MH4U_Database.Database
         {
             InitializeConnection();
             string s = @"SELECT w._id,w.parent_id,w.wtype,w.attack,w.max_attack,w.element,w.element_attack,w.element_2,w.element_2_attack,w.awaken,w.awaken_attack,w.defense,w.sharpness,
-                        w.affinity,w.phial,w.charges,w.coatings,w.recoil,w.num_slots,w.tree_depth,i.name AS item_name,i.rarity AS item_rarity FROM weapons w JOIN items i ON i._id=w._id WHERE w.wtype=?";
+                        w.affinity,w.phial,w.charges,w.coatings,w.recoil,w.deviation,w.reload_speed,w.num_slots,w.tree_depth,i.name AS item_name,i.rarity AS item_rarity FROM weapons w JOIN items i ON i._id=w._id WHERE w.wtype=?";
             return await _connection.QueryAsync<Weapon>(s, type);
         }
 
