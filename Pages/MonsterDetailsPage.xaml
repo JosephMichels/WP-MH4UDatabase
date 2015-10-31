@@ -11,6 +11,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <controls:UppercaseConverter x:Key="UppercaseConverter"/>
+        <converters:WeaknessFontWeightConverter x:Key="WeaknessConverter"/>
         <converters:CollectionVisibilityConverter x:Key="CollectionVisibilityConverter"/>
         <Style x:Key="damageListStyle" TargetType="ListViewItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -97,9 +98,9 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="{Binding body_part}" Style="{StaticResource BodyTextBlockStyle}"/>
-                                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1" Text="{Binding cut}" Style="{StaticResource BodyTextBlockStyle}"/>
-                                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Column="2" Text="{Binding impact}" Style="{StaticResource BodyTextBlockStyle}"/>
-                                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Column="3" Text="{Binding shot}" Style="{StaticResource BodyTextBlockStyle}"/>
+                                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Column="1" Text="{Binding cut}" Style="{StaticResource BodyTextBlockStyle}" FontWeight="{Binding cut,Converter={StaticResource WeaknessConverter}}"/>
+                                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Column="2" Text="{Binding impact}" Style="{StaticResource BodyTextBlockStyle}" FontWeight="{Binding impact,Converter={StaticResource WeaknessConverter}}"/>
+                                        <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Column="3" Text="{Binding shot}" Style="{StaticResource BodyTextBlockStyle}" FontWeight="{Binding shot,Converter={StaticResource WeaknessConverter}}"/>
                                         <TextBlock VerticalAlignment="Center" TextAlignment="Center" Grid.Column="4" Text="{Binding ko_string}" Style="{StaticResource BodyTextBlockStyle}"/>
                                     </Grid>
                                 </DataTemplate>

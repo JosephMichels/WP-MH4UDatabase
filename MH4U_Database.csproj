@@ -163,6 +163,7 @@
     <Compile Include="Converters\SharpnessWidthConverter.cs" />
     <Compile Include="Controls\StretchItemsListView.cs" />
     <Compile Include="Converters\UppercaseConverter.cs" />
+    <Compile Include="Converters\WeaknessFontWeightConverter.cs" />
     <Compile Include="Database\Armor.cs" />
     <Compile Include="Database\Component.cs" />
     <Compile Include="Database\Gathering.cs" />

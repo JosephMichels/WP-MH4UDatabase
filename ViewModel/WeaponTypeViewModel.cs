@@ -42,6 +42,7 @@ namespace MH4U_Database.ViewModel
                 new WeaponTypeObject("Sword and Shield"),
                 new WeaponTypeObject("Dual Blades"),
                 new WeaponTypeObject("Hammer"),
+                new WeaponTypeObject("Hunting Horn"),
                 new WeaponTypeObject("Lance"),
                 new WeaponTypeObject("Gunlance"),
                 new WeaponTypeObject("Switch Axe"),
