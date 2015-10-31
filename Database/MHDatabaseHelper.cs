@@ -134,8 +134,23 @@ namespace MH4U_Database.Database
         public static async Task<List<Weapon>> GetWeaponsByType(string type)
         {
             InitializeConnection();
-            string s = @"SELECT w._id,w.parent_id,w.wtype,w.attack,w.max_attack,w.element,w.element_attack,w.element_2,w.element_2_attack,w.awaken,w.awaken_attack,w.defense,w.sharpness,
-                        w.affinity,w.phial,w.charges,w.coatings,w.recoil,w.deviation,w.reload_speed,w.num_slots,w.tree_depth,i.name AS item_name,i.rarity AS item_rarity FROM weapons w JOIN items i ON i._id=w._id WHERE w.wtype=?";
+
+            string vals = "w._id,w.parent_id,w.wtype,w.attack,w.max_attack,w.element,w.element_attack,w.element_2,w.element_2_attack,w.awaken,w.awaken_attack,w.defense,w.affinity,w.num_slots,w.tree_depth,";
+
+            if (type.Equals("Bow"))
+                vals += "w.charges,w.coatings,w.recoil,";
+            else if (type.Contains("Bowgun"))
+                vals += "w.recoil,w.deviation,w.reload_speed,";
+            else
+                vals += "w.sharpness,";
+
+            if (type.Equals("Hunting Horn"))
+                vals += "w.horn_notes,";
+            if (type.Equals("Charge Blade") || type.Equals("Switch Axe"))
+                vals += "w.phial,";
+
+
+            string s = @"SELECT " + vals + "i.name AS item_name,i.rarity AS item_rarity FROM weapons w JOIN items i ON i._id=w._id WHERE w.wtype=?";
             return await _connection.QueryAsync<Weapon>(s, type);
         }
 

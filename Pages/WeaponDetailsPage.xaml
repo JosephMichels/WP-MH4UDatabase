@@ -123,6 +123,14 @@
                         <Image Source="/Assets/icons_items/Bottle-Orange.png" Width="20" Visibility="{Binding coating_blast,Converter={StaticResource IntegerVisibilityConverter}}"/>
                     </StackPanel>
                 </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Recoil:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding recoil}" TextAlignment="Left"/>
+                </Grid>
                 <!--Charges (Bow Only) -->
                 <Grid Visibility="{Binding charges,Converter={StaticResource IntegerVisibilityConverter}}">
                     <Grid.ColumnDefinitions>
