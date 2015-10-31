@@ -29,6 +29,164 @@
                 <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Foreground="{ThemeResource PhoneAccentBrush}" Text="&#x2605;" Margin="4,0,0,0" FontWeight="Bold" Visibility="{Binding creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
             </StackPanel>
         </DataTemplate>
+        <DataTemplate x:Key="BasicWeaponTemplate">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                    <Image Margin="5,0,5,0" Width="50" Height="50" Source="{Binding Weapon.icon_path}"/>
+                    <TextBlock VerticalAlignment="Center" Style="{StaticResource GroupHeaderTextBlockStyle}" Margin="5,0,0,0" Text="{Binding Weapon.item_name}" FontWeight="Bold"/>
+                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Type:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding Weapon.wtype}" TextAlignment="Left"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Rarity:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding Weapon.item_rarity}" TextAlignment="Left"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Attack:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.attack}" TextAlignment="Left"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Element:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.total_element}" TextAlignment="Left"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Slots:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.slots}" TextAlignment="Left"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Affinity:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.affinity}" TextAlignment="Left"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Defense:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.defense}" TextAlignment="Left"/>
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="BladeWeaponTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Sharpness:" TextAlignment="Left"/>
+                <controls:SharpnessDisplay VerticalAlignment="Center" Grid.Column="1" Margin="0,0,5,0" Sharpness="{Binding DefaultSharpness}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="BowWeaponTemplate">
+            <StackPanel>
+                <Grid Visibility="{Binding coatings,Converter={StaticResource IntegerVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Coatings:" TextAlignment="Left"/>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Image Source="/Assets/icons_items/Bottle-Red.png" Width="20" Visibility="{Binding coating_power,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                        <Image Source="/Assets/icons_items/Bottle-Purple.png" Width="20" Visibility="{Binding coating_poison,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                        <Image Source="/Assets/icons_items/Bottle-Yellow.png" Width="20" Visibility="{Binding coating_para,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                        <Image Source="/Assets/icons_items/Bottle-Cyan.png" Width="20" Visibility="{Binding coating_sleep,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                        <Image Source="/Assets/icons_items/Bottle-White.png" Width="20" Visibility="{Binding coating_range,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                        <Image Source="/Assets/icons_items/Bottle-Pink.png" Width="20" Visibility="{Binding coating_paint,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                        <Image Source="/Assets/icons_items/Bottle-Blue.png" Width="20" Visibility="{Binding coating_exhaust,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                        <Image Source="/Assets/icons_items/Bottle-Orange.png" Width="20" Visibility="{Binding coating_blast,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                    </StackPanel>
+                </Grid>
+                <!--Charges (Bow Only) -->
+                <Grid Visibility="{Binding charges,Converter={StaticResource IntegerVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Charge 1:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding charge1_string}" FontWeight="{Binding charges1,Converter={StaticResource FontWeightConverter}}" TextAlignment="Left"/>
+                </Grid>
+                <Grid Visibility="{Binding charges,Converter={StaticResource IntegerVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Charge 2:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding charge2_string}" FontWeight="{Binding charges2,Converter={StaticResource FontWeightConverter}}" TextAlignment="Left"/>
+                </Grid>
+                <Grid Visibility="{Binding charges,Converter={StaticResource IntegerVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Charge 3:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding charge3_string}" FontWeight="{Binding charges3,Converter={StaticResource FontWeightConverter}}" TextAlignment="Left"/>
+                </Grid>
+                <Grid Visibility="{Binding charges,Converter={StaticResource IntegerVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Charge 4:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding charge4_string}" FontWeight="{Binding charges4,Converter={StaticResource FontWeightConverter}}" TextAlignment="Left"/>
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="BowgunWeaponTemplate">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Reload:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding reload_speed}" TextAlignment="Left"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Recoil:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding recoil}" TextAlignment="Left"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Deviation:" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding deviation}" TextAlignment="Left"/>
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+        <selectors:WeaponListTemplateSelector x:Key="WeaponTemplateSelector" BladeTemplate="{StaticResource BladeWeaponTemplate}" BowTemplate="{StaticResource BowWeaponTemplate}" BowGunTemplate="{StaticResource BowgunWeaponTemplate}"/>
     </Page.Resources>
     <Page.Transitions>
         <TransitionCollection>
@@ -49,128 +207,14 @@
                 <!--Double line list with text wrapping-->
                 <ScrollViewer>
                     <StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                        <Image Margin="5,0,5,0" Width="50" Height="50" Source="{Binding Weapon.icon_path}"/>
-                        <TextBlock VerticalAlignment="Center" Style="{StaticResource GroupHeaderTextBlockStyle}" Margin="5,0,0,0" Text="{Binding Weapon.item_name}" FontWeight="Bold"/>
+                        <ContentPresenter ContentTemplate="{StaticResource BasicWeaponTemplate}"/>
+                        <controls:CompositionControl Content="{Binding Weapon}" HorizontalContentAlignment="Stretch">
+                            <controls:CompositionControl.ContentTemplateSelector>
+                                <selectors:WeaponListTemplateSelector BladeTemplate="{StaticResource BladeWeaponTemplate}" BowTemplate="{StaticResource BowWeaponTemplate}" BowGunTemplate="{StaticResource BowgunWeaponTemplate}"/>
+                            </controls:CompositionControl.ContentTemplateSelector>
+                        </controls:CompositionControl>
+
                     </StackPanel>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Type:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding Weapon.wtype}" TextAlignment="Left"/>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Rarity:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" Text="{Binding Weapon.item_rarity}" TextAlignment="Left"/>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Attack:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.attack}" TextAlignment="Left"/>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Element:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.total_element}" TextAlignment="Left"/>
-                    </Grid>
-                    <!-- Sharpness (Blade Only) -->
-                    <Grid Visibility="{Binding Weapon.sharpness,Converter={StaticResource IntegerVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Sharpness:" TextAlignment="Left"/>
-                        <controls:SharpnessDisplay VerticalAlignment="Center" Grid.Column="1" Margin="0,0,5,0" Sharpness="{Binding Weapon.DefaultSharpness}"/>
-                    </Grid>
-                    <!-- Coatings (Bow Only) -->
-                    <Grid Visibility="{Binding Weapon.coatings,Converter={StaticResource IntegerVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Coatings:" TextAlignment="Left"/>
-                        <StackPanel Grid.Column="1" Orientation="Horizontal">
-                            <Image Source="/Assets/icons_items/Bottle-Red.png" Width="20" Visibility="{Binding Weapon.coating_power,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                            <Image Source="/Assets/icons_items/Bottle-Purple.png" Width="20" Visibility="{Binding Weapon.coating_poison,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                            <Image Source="/Assets/icons_items/Bottle-Yellow.png" Width="20" Visibility="{Binding Weapon.coating_para,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                            <Image Source="/Assets/icons_items/Bottle-Cyan.png" Width="20" Visibility="{Binding Weapon.coating_sleep,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                            <Image Source="/Assets/icons_items/Bottle-White.png" Width="20" Visibility="{Binding Weapon.coating_range,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                            <Image Source="/Assets/icons_items/Bottle-Pink.png" Width="20" Visibility="{Binding Weapon.coating_paint,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                            <Image Source="/Assets/icons_items/Bottle-Blue.png" Width="20" Visibility="{Binding Weapon.coating_exhaust,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                            <Image Source="/Assets/icons_items/Bottle-Orange.png" Width="20" Visibility="{Binding Weapon.coating_blast,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Slots:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.slots}" TextAlignment="Left"/>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Affinity:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.affinity}" TextAlignment="Left"/>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Defense:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.defense}" TextAlignment="Left"/>
-                    </Grid>
-                    <!--Charges (Bow Only) -->
-                    <Grid Visibility="{Binding Weapon.charges,Converter={StaticResource IntegerVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Charge 1:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.charge1_string}" FontWeight="{Binding Weapon.charges1,Converter={StaticResource FontWeightConverter}}" TextAlignment="Left"/>
-                    </Grid>
-                    <Grid Visibility="{Binding Weapon.charges,Converter={StaticResource IntegerVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Charge 2:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.charge2_string}" FontWeight="{Binding Weapon.charges2,Converter={StaticResource FontWeightConverter}}" TextAlignment="Left"/>
-                    </Grid>
-                    <Grid Visibility="{Binding Weapon.charges,Converter={StaticResource IntegerVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Charge 3:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.charge3_string}" FontWeight="{Binding Weapon.charges3,Converter={StaticResource FontWeightConverter}}" TextAlignment="Left"/>
-                    </Grid>
-                    <Grid Visibility="{Binding Weapon.charges,Converter={StaticResource IntegerVisibilityConverter}}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Charge 4:" TextAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,5,0" TextWrapping="Wrap" Text="{Binding Weapon.charge4_string}" FontWeight="{Binding Weapon.charges4,Converter={StaticResource FontWeightConverter}}" TextAlignment="Left"/>
-                    </Grid>
-                </StackPanel>
                 </ScrollViewer>
             </PivotItem>
             <PivotItem
