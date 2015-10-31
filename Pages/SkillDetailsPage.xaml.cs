@@ -1,4 +1,5 @@
 ﻿using MH4U_Database.Common;
+using MH4U_Database.Database;
 using MH4U_Database.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -31,10 +32,34 @@ namespace MH4U_Database.Pages
             this.InitializeComponent();
         }
 
+        protected override void LoadState(object sender, LoadStateEventArgs e)
+        {
+            if (e.PageState != null)
+            {
+                if (e.PageState.ContainsKey(PageValues.SELECTED_PIVOT_INDEX))
+                    pivot.SelectedIndex = (int)e.PageState[PageValues.SELECTED_PIVOT_INDEX];
+            }
+
+        }
+
+        protected override void SaveState(object sender, SaveStateEventArgs e)
+        {
+            e.PageState.Add(PageValues.SELECTED_PIVOT_INDEX, pivot.SelectedIndex);
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             DataContext = new SkillDetailsViewModel((int)e.Parameter);
             base.OnNavigatedTo(e);
+        }
+
+        private void ArmorClicked(object sender, ItemClickEventArgs e)
+        {
+            if(e.ClickedItem != null && e.ClickedItem is ItemToSkillTree)
+            {
+                ItemToSkillTree its = (ItemToSkillTree)e.ClickedItem;
+                Frame.Navigate(typeof(ArmorDetailsPage), its.item_id);
+            }
         }
     }
 }

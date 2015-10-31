@@ -1,4 +1,4 @@
-﻿<Page
+﻿<local:BasePage
     x:Class="MH4U_Database.Pages.ArmorDetailsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -179,4 +179,17 @@
             </PivotItem>
         </Pivot>
     </Grid>
-</Page>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="homeAppBarButton" x:Name="AddAppBarButton" Label="home" Icon="Home" Click="AppBarHomeClicked" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="SecondaryButton1" x:Name="SecondaryButton1" Label="Monsters" Click="AppBarMonstersClicked" />
+                <AppBarButton x:Uid="SecondaryButton2" x:Name="SecondaryButton2" Label="Items" Click="AppBarItemsClicked" />
+                <AppBarButton x:Uid="SecondaryButton3" x:Name="SecondaryButton3" Label="Weapons" Click="AppBarWeaponsClicked" />
+                <AppBarButton x:Uid="SecondaryButton4" x:Name="SecondaryButton4" Label="Armor" Click="AppBarArmorClicked"/>
+                <AppBarButton x:Uid="SecondaryButton5" x:Name="SecondaryButton5" Label="Skills" Click="AppBarSkillsClicked" />
+                <AppBarButton x:Uid="SecondaryButton6" x:Name="SecondaryButton6" Label="Quests" Click="AppBarQuestsClicked" />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</local:BasePage>

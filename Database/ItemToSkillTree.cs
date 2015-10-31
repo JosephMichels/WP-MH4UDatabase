@@ -17,6 +17,14 @@ namespace MH4U_Database.Database
 
         public int point_value { get; set; }
 
+        //JOIN with item
+        public string item_name { get; set; }
+        public string icon_name { get; set; }
+        public string icon_path { get
+            {
+                return "/Assets/icons_items/" + icon_name;
+            } }
+
         public string point_value_string { get
             {
                 //If positive, add a '+'

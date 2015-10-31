@@ -23,20 +23,16 @@ namespace MH4U_Database.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ArmorDetailsPage : Page
+    public sealed partial class ArmorDetailsPage : BasePage
     {
-        NavigationHelper _navHelper;
 
         public ArmorDetailsPage()
         {
             this.InitializeComponent();
-
-            _navHelper = new NavigationHelper(this);
-            _navHelper.SaveState += SaveState;
-            _navHelper.LoadState += LoadState;
         }
 
-        private void LoadState(object sender, LoadStateEventArgs e)
+
+        protected override void LoadState(object sender, LoadStateEventArgs e)
         {
             if (e.PageState != null)
             {
@@ -46,7 +42,7 @@ namespace MH4U_Database.Pages
 
         }
 
-        private void SaveState(object sender, SaveStateEventArgs e)
+        protected override void SaveState(object sender, SaveStateEventArgs e)
         {
             e.PageState.Add(PageValues.SELECTED_PIVOT_INDEX, pivot.SelectedIndex);
         }
@@ -60,12 +56,7 @@ namespace MH4U_Database.Pages
         {
             int id = (int)e.Parameter;
             DataContext = new ArmorDetailsViewModel(id);
-            _navHelper.OnNavigatedTo(e);
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            _navHelper.OnNavigatedFrom(e);
+            base.OnNavigatedTo(e);
         }
 
         private void ComponentSelected(object sender, ItemClickEventArgs e)

@@ -205,6 +205,8 @@ namespace MH4U_Database.Database
             return await _connection.QueryAsync<Armor>(s, type);
         }
 
+
+
         #endregion
 
         #region Hunting Rewards
@@ -379,6 +381,21 @@ namespace MH4U_Database.Database
             LEFT OUTER JOIN skill_trees st ON ist.skill_tree_id=st._id
             WHERE ist.item_id=?";
             return await _connection.QueryAsync<ItemToSkillTree>(s, id);
+        }
+
+        public static async Task<List<ItemToSkillTree>> GetArmorForSkillTree(int id,string subtype)
+        {
+            //i - items
+            //ist - item_to_skill_tree
+            //st - skill_trees
+            InitializeConnection();
+            string s =
+            @"SELECT ist.item_id,ist.point_value,
+            i.name AS item_name,i.icon_name AS icon_name
+            FROM item_to_skill_tree ist
+            LEFT OUTER JOIN items i ON ist.item_id=i._id
+            WHERE ist.skill_tree_id=? AND i.sub_type=?";
+            return await _connection.QueryAsync<ItemToSkillTree>(s, id,subtype);
         }
         
         public static async Task<List<SkillTree>> GetAllSkillTrees()
