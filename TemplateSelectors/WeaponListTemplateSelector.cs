@@ -14,6 +14,7 @@ namespace MH4U_Database.TemplateSelectors
         public DataTemplate BladeTemplate { get; set; }
         public DataTemplate BowTemplate { get; set; }
         public DataTemplate BowGunTemplate { get; set; }
+        public DataTemplate HuntingHornTemplate { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
@@ -31,6 +32,8 @@ namespace MH4U_Database.TemplateSelectors
                 return BowTemplate;
             else if (w.wtype.Equals("Light Bowgun") || w.wtype.Equals("Heavy Bowgun"))
                 return BowGunTemplate;
+            else if (w.wtype.Equals("Hunting Horn"))
+                return HuntingHornTemplate;
             return BladeTemplate;
         }
 

@@ -90,9 +90,13 @@ namespace MH4U_Database.Database
         public string shelling_type { get; set; }
         public string reload_speed { get; set; }
         public string deviation { get; set; }
-		
+		public string horn_notes { get; set; }
+        public char horn_notes_1 { get { return horn_notes != null ? horn_notes[0] : ' '; } }
+        public char horn_notes_2 { get { return horn_notes != null ? horn_notes[1] : ' '; } }
+        public char horn_notes_3 { get { return horn_notes != null ? horn_notes[2] : ' '; } }
+
         //A bunch of charge stuff
-		public string chargesString{
+        public string chargesString{
 			get
 			{
                 string[] c = charges.Split('|');
@@ -178,9 +182,9 @@ namespace MH4U_Database.Database
                 string[] sharp1 = sharpP[0].Split('.');
                 string[] sharp2 = sharpP[1].Split('.');
 
-                for (int i = 0; i < sharp1.Length; i++)
+                for (int i = 0; i < s1.Length; i++)
                     s1[i] = int.Parse(sharp1[i]);
-                for (int i = 0; i < sharp2.Length; i++)
+                for (int i = 0; i < s2.Length; i++)
                     s2[i] = int.Parse(sharp2[i]);
             }
             catch (Exception e)

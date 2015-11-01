@@ -156,6 +156,7 @@
     <Compile Include="Converters\ElementImageConverter.cs" />
     <Compile Include="Converters\IntegerVisibilityConverter.cs" />
     <Compile Include="Converters\MarginConverter.cs" />
+    <Compile Include="Converters\NoteImageConverter.cs" />
     <Compile Include="Converters\RarityColorConverter.cs" />
     <Compile Include="Controls\SharpnessDisplay.xaml.cs">
       <DependentUpon>SharpnessDisplay.xaml</DependentUpon>
@@ -252,6 +253,14 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\icons_armor\Note.aqua.png" />
+    <Content Include="Assets\icons_armor\Note.blue.png" />
+    <Content Include="Assets\icons_armor\Note.green.png" />
+    <Content Include="Assets\icons_armor\Note.orange.png" />
+    <Content Include="Assets\icons_armor\Note.purple.png" />
+    <Content Include="Assets\icons_armor\Note.red.png" />
+    <Content Include="Assets\icons_armor\Note.white.png" />
+    <Content Include="Assets\icons_armor\Note.yellow.png" />
     <Content Include="Assets\icons_items\arms1.png" />
     <Content Include="Assets\icons_items\arms10.png" />
     <Content Include="Assets\icons_items\arms2.png" />
