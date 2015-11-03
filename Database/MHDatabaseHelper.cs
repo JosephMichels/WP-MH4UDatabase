@@ -164,7 +164,7 @@ namespace MH4U_Database.Database
                 List<Weapon> weapons = new List<Weapon>();
                 do
                 {
-                    Weapon w = con.Query<Weapon>("SELECT w._id,w.creation_cost,w.parent_id,i.name AS item_name FROM weapons w LEFT OUTER JOIN items i ON w._id=i._id WHERE w._id=?", parentId).FirstOrDefault();
+                    Weapon w = con.Query<Weapon>("SELECT w._id,w.creation_cost,w.parent_id,w.final,i.name AS item_name FROM weapons w LEFT OUTER JOIN items i ON w._id=i._id WHERE w._id=?", parentId).FirstOrDefault();
                     if (w == null)
                     {
                         if (weapons.Count > 0) weapons[weapons.Count - 1].tree_depth = -1; //This a hack to mark the child most element for XAML binding
@@ -176,6 +176,14 @@ namespace MH4U_Database.Database
 
                 } while (true);
             }
+        }
+
+        public static async Task<List<Weapon>> GetWeaponChildren(int id)
+        {
+            InitializeConnection();
+
+            string q = "SELECT w._id,w.creation_cost,i.name AS item_name FROM weapons w LEFT OUTER JOIN items i ON w._id = i._id WHERE w.parent_id=?";
+            return await _connection.QueryAsync<Weapon>(q, id);
         }
 
         #endregion

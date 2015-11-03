@@ -54,7 +54,12 @@ namespace MH4U_Database.ViewModel
             if (Components == null)
                 Components = await MHDatabaseHelper.GetComponentsForItem(id);
             if (WeaponFamily == null)
+            {
                 WeaponFamily = MHDatabaseHelper.GetWeaponParents(id);
+                List<Weapon> upgrades = await MHDatabaseHelper.GetWeaponChildren(id);
+                foreach (Weapon w in upgrades) w.final = 1;
+                WeaponFamily.AddRange(upgrades);
+            }
         }
 
     }

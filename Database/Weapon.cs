@@ -87,6 +87,7 @@ namespace MH4U_Database.Database
         public int num_slots { get; set; }
         public int tree_depth { get; set; }
         public int final { get; set; }
+        public int not_final { get { return (final == 1) ? 0 : 1; } }
         public string shelling_type { get; set; }
         public string reload_speed { get; set; }
         public string deviation { get; set; }

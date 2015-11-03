@@ -20,13 +20,17 @@
                     <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Text="{Binding item_name}"/>
                     <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Text="&#x2605;" Margin="4,0,0,0" Visibility="{Binding creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
                 </StackPanel>
-                <Polygon Margin="0,6,0,6" HorizontalAlignment="Center" Points="0,0 20,0, 10,8" Fill="Gray"/>
+                <Polygon Margin="0,6,0,6" HorizontalAlignment="Center" Points="0,0 20,0, 10,8" Fill="Gray" Visibility="{Binding not_final,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                <TextBlock Margin="0,6,0,6" HorizontalAlignment="Center" Text="-OR-" Visibility="{Binding final,Converter={StaticResource IntegerVisibilityConverter}}"/>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="CurrentTemplate">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Foreground="{ThemeResource PhoneAccentBrush}" Text="{Binding item_name}" FontWeight="Bold"/>
-                <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Foreground="{ThemeResource PhoneAccentBrush}" Text="&#x2605;" Margin="4,0,0,0" FontWeight="Bold" Visibility="{Binding creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Foreground="{ThemeResource PhoneAccentBrush}" Text="{Binding item_name}" FontWeight="Bold"/>
+                    <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Foreground="{ThemeResource PhoneAccentBrush}" Text="&#x2605;" Margin="4,0,0,0" FontWeight="Bold" Visibility="{Binding creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                </StackPanel>
+                <Polygon Margin="0,6,0,6" HorizontalAlignment="Center" Points="0,0 20,0, 10,8" Fill="{ThemeResource PhoneAccentBrush}" Visibility="{Binding not_final,Converter={StaticResource IntegerVisibilityConverter}}"/>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="BasicWeaponTemplate">
