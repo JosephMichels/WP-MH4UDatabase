@@ -60,5 +60,14 @@ namespace MH4U_Database.Pages
                 Frame.Navigate(typeof(ItemDetailsPage), hr.item_id);
             }
         }
+
+        private void QuestClicked(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem != null && e.ClickedItem is Quest)
+            {
+                Quest q = (Quest)e.ClickedItem;
+                Frame.Navigate(typeof(QuestDetailsPage), q._id);
+            }
+        }
     }
 }

@@ -310,6 +310,13 @@ namespace MH4U_Database.Database
             return result.FirstOrDefault();
         }
 
+        public static async Task<List<Quest>> GetQuestsForMonster(int id)
+        {
+            InitializeConnection();
+
+            return await _connection.QueryAsync<Quest>("SELECT q._id,q.name,q.stars,q.hub FROM monster_to_quest m LEFT OUTER JOIN quests q ON m.quest_id=q._id WHERE m.monster_id=?", id);
+        }
+
         #endregion
 
         #region Component Queries

@@ -291,6 +291,29 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
             </PivotItem>
+            <PivotItem
+                Margin="19,12,0,0"
+                Header="quests"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <ListView ItemsSource="{Binding Quests}" IsItemClickEnabled="True" ItemClick="QuestClicked">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5,0,0,0" VerticalAlignment="Center" Grid.Column="0">
+                                <TextBlock Text="{Binding name}" Style="{StaticResource ListViewItemTextBlockStyle}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding hub}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                                    <TextBlock Margin="6,0,0,0" Text="{Binding stars}" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
         </Pivot>
     </Grid>
     <Page.BottomAppBar>

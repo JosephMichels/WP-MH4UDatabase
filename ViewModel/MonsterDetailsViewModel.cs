@@ -94,7 +94,16 @@ namespace MH4U_Database.ViewModel
             }
         }
 
-
+        List<Quest> _quests;
+        public List<Quest> Quests
+        {
+            get { return _quests; }
+            set
+            {
+                _quests = value;
+                OnPropertyChanged("Quests");
+            }
+        }
 
         public MonsterDetailsViewModel(int id)
         {
@@ -126,6 +135,9 @@ namespace MH4U_Database.ViewModel
                 GHuntingRewardGroup = (from item in (await MHDatabaseHelper.GetHuntingRewardsForMonsterRank(id, "G"))
                                        group item by item.condition into huntGroup
                                        select new HuntingRewardGroup(huntGroup) { Condition = huntGroup.Key }).ToList();
+
+            if (Quests == null)
+                Quests = await MHDatabaseHelper.GetQuestsForMonster(id);
         }
     }
 }
