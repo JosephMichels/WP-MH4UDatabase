@@ -16,12 +16,13 @@
         <converters:AsteriskFontWeightConverter x:Key="FontWeightConverter"/>
         <DataTemplate x:Key="AncestorTemplate">
             <StackPanel>
+                <TextBlock Margin="0,6,0,6" HorizontalAlignment="Center" Text="UPGRADES TO" Visibility="{Binding final,Converter={StaticResource IntegerVisibilityConverter}}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Text="{Binding item_name}"/>
                     <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Text="&#x2605;" Margin="4,0,0,0" Visibility="{Binding creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
                 </StackPanel>
                 <Polygon Margin="0,6,0,6" HorizontalAlignment="Center" Points="0,0 20,0, 10,8" Fill="Gray" Visibility="{Binding not_final,Converter={StaticResource IntegerVisibilityConverter}}"/>
-                <TextBlock Margin="0,6,0,6" HorizontalAlignment="Center" Text="-OR-" Visibility="{Binding final,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                <TextBlock Margin="0,6,0,6" HorizontalAlignment="Center" Text="" Visibility="{Binding final,Converter={StaticResource IntegerVisibilityConverter}}"/>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="CurrentTemplate">
@@ -270,7 +271,7 @@
                                 <Image Grid.Column="0" Margin="5,0,5,0" Width="50" Height="50" Source="{Binding comp_item_icon_path}"/>
                                 <TextBlock Grid.Column="1"  VerticalAlignment="Center" Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding comp_item_name}"/>
                                 <TextBlock Grid.Column="2"  VerticalAlignment="Center" TextAlignment="Right" Margin="5,0,0,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding type}"/>
-                                <TextBlock Grid.Column="3"  VerticalAlignment="Center" TextAlignment="Right" Margin="5,0,5,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding quantity}"/>
+                                <TextBlock Grid.Column="3"  VerticalAlignment="Center" TextAlignment="Right" Margin="0,0,6,0" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding quantity}"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
