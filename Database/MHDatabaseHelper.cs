@@ -68,6 +68,17 @@ namespace MH4U_Database.Database
 
         #endregion
 
+        #region Monster Weakness Query
+
+        public static async Task<MonsterWeakness> GetMonsterWeakness(int id)
+        {
+            InitializeConnection();
+            var result = await _connection.QueryAsync<MonsterWeakness>("SELECT * FROM monster_weakness WHERE monster_id=?", id);
+            return result.FirstOrDefault();
+        }
+
+        #endregion
+
         #region Monster Status Queries
 
         public static async Task<List<MonsterStatus>> GetMonsterStatusForMonster(int id)

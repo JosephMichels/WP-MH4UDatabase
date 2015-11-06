@@ -14,9 +14,10 @@
         <controls:UppercaseConverter x:Key="UppercaseConverter"/>
         <controls:IntegerVisibilityConverter x:Key="IntegerVisibilityConverter"/>
         <converters:AsteriskFontWeightConverter x:Key="FontWeightConverter"/>
+        <converters:NoteImageConverter x:Key="NoteImageConverter"/>
         <DataTemplate x:Key="AncestorTemplate">
             <StackPanel>
-                <TextBlock Margin="0,6,0,6" HorizontalAlignment="Center" Text="UPGRADES TO" Visibility="{Binding final,Converter={StaticResource IntegerVisibilityConverter}}"/>
+                <TextBlock Margin="0,6,0,3" HorizontalAlignment="Center" Text="UPGRADES TO" Visibility="{Binding final,Converter={StaticResource IntegerVisibilityConverter}}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Text="{Binding item_name}"/>
                     <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Text="&#x2605;" Margin="4,0,0,0" Visibility="{Binding creation_cost,Converter={StaticResource IntegerVisibilityConverter}}"/>
@@ -108,6 +109,31 @@
                 <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Sharpness:" TextAlignment="Left"/>
                 <controls:SharpnessDisplay VerticalAlignment="Center" Grid.Column="1" Margin="0,0,5,0" Sharpness="{Binding DefaultSharpness}"/>
             </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="HHWeaponTemplate">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Sharpness:" TextAlignment="Left"/>
+                    <controls:SharpnessDisplay VerticalAlignment="Center" Grid.Column="1" Margin="0,0,5,0" Sharpness="{Binding DefaultSharpness}"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource BodyTextBlockStyle}" Margin="5,0,0,0" Text="Notes:" TextAlignment="Left"/>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Image Source="{Binding horn_notes_1,Converter={StaticResource NoteImageConverter}}" Width="20"/>
+                        <Image Source="{Binding horn_notes_2,Converter={StaticResource NoteImageConverter}}" Width="20"/>
+                        <Image Source="{Binding horn_notes_3,Converter={StaticResource NoteImageConverter}}" Width="20"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="BowWeaponTemplate">
             <StackPanel>
@@ -223,7 +249,7 @@
                         <ContentPresenter ContentTemplate="{StaticResource BasicWeaponTemplate}"/>
                         <controls:CompositionControl Content="{Binding Weapon}" HorizontalContentAlignment="Stretch">
                             <controls:CompositionControl.ContentTemplateSelector>
-                                <selectors:WeaponListTemplateSelector BladeTemplate="{StaticResource BladeWeaponTemplate}" BowTemplate="{StaticResource BowWeaponTemplate}" BowGunTemplate="{StaticResource BowgunWeaponTemplate}"/>
+                                <selectors:WeaponListTemplateSelector BladeTemplate="{StaticResource BladeWeaponTemplate}" BowTemplate="{StaticResource BowWeaponTemplate}" BowGunTemplate="{StaticResource BowgunWeaponTemplate}" HuntingHornTemplate="{StaticResource HHWeaponTemplate}"/>
                             </controls:CompositionControl.ContentTemplateSelector>
                         </controls:CompositionControl>
 

@@ -176,6 +176,7 @@
     <Compile Include="Database\Monster.cs" />
     <Compile Include="Database\MonsterDamage.cs" />
     <Compile Include="Database\MonsterStatus.cs" />
+    <Compile Include="Database\MonsterWeakness.cs" />
     <Compile Include="Database\Quest.cs" />
     <Compile Include="Database\QuestRewards.cs" />
     <Compile Include="Database\Sharpness.cs" />
