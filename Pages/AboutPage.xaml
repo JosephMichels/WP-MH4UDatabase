@@ -1,0 +1,41 @@
+﻿<local:BasePage
+    x:Class="MH4U_Database.Pages.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MH4U_Database.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Pivot Title="MH4U DATABASE">
+            <PivotItem Header="about">
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="MH4U Database V1.0" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,0,20"/>
+                    <TextBlock HorizontalAlignment="Center" Text="CONTRIBUTE" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                    <HyperlinkButton HorizontalAlignment="Center" Click="HyperlinkButton_Click" Margin="0,0,0,20">
+                        <TextBlock Foreground="{ThemeResource PhoneAccentBrush}">
+                            <Underline>
+                                Github
+                            </Underline>
+                        </TextBlock>
+                    </HyperlinkButton>
+                    <TextBlock HorizontalAlignment="Center" Text="SPECIAL THANKS" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" Text="kamegami13" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Kiranico" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Kogath at Monster Hunter Wikia" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" Text="kaiiboraka" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Ping" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Aegil" Style="{StaticResource BaseTextBlockStyle}"/>
+                </StackPanel>
+            </PivotItem>
+            <PivotItem Header="changelog">
+                <StackPanel>
+                    <TextBlock Text="V1.0" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,0,10"/>
+                    <TextBlock Text="Inital Release" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</local:BasePage>

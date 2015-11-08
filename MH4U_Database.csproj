@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ArmorDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,6 +188,9 @@
     <Compile Include="Database\SkillTree.cs" />
     <Compile Include="Database\Weapon.cs" />
     <Compile Include="Database\WeaponTreeEntry.cs" />
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ArmorDetailsPage.xaml.cs">
       <DependentUpon>ArmorDetailsPage.xaml</DependentUpon>
     </Compile>

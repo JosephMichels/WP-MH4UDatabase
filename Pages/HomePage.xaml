@@ -57,4 +57,9 @@
             </ListView>
         </Grid>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="aboutAppBarButton" x:Name="aboutAppBarButton" Label="about" Icon="Help" Click="AppBarAboutClicked" />
+        </CommandBar>
+    </Page.BottomAppBar>
 </local:BasePage>

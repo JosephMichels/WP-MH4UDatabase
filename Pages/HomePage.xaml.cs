@@ -66,5 +66,10 @@ namespace MH4U_Database.Pages
                 Frame.BackStack.Clear();
             }
         }
+
+        private void AppBarAboutClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
+        }
     }
 }
