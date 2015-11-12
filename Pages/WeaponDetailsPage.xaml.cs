@@ -49,8 +49,24 @@ namespace MH4U_Database.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             int id = (int)e.Parameter;
-            DataContext = new WeaponDetailsViewModel(id);
+            var v = new WeaponDetailsViewModel(id);
+            v.PropertyChanged += V_PropertyChanged;
+            DataContext = v;
+            
             base.OnNavigatedTo(e);
+        }
+
+        private void V_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("Melodies"))
+            {
+                PivotItem pi = new PivotItem();
+                pi.Header = "songs";
+                ListView lv = new ListView();
+                lv.ItemsSource = ((WeaponDetailsViewModel)DataContext).Melodies;
+                pi.Content = lv;
+                pivot.Items.Insert(1, pi);
+            }
         }
 
         private void ComponentSelected(object sender, ItemClickEventArgs e)

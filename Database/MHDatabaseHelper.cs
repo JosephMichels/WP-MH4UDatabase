@@ -199,6 +199,16 @@ namespace MH4U_Database.Database
 
         #endregion
 
+        #region Horn Melody Query
+
+        public static async Task<List<HornMelody>> GetHornMelodies(string notes)
+        {
+            InitializeConnection();
+            return await _connection.QueryAsync<HornMelody>("SELECT notes,song,effect1,effect2,duration,extension FROM horn_melodies WHERE notes=?", notes);
+        }
+
+        #endregion
+
         #region Armor Queries
 
         public static async Task<Armor> GetArmor(int id)

@@ -11,6 +11,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
+        <PivotItem  x:Name="songItem"
+                Margin="19,12,0,0"
+                Header="info"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+            Test
+        </PivotItem>
         <controls:UppercaseConverter x:Key="UppercaseConverter"/>
         <controls:IntegerVisibilityConverter x:Key="IntegerVisibilityConverter"/>
         <converters:AsteriskFontWeightConverter x:Key="FontWeightConverter"/>

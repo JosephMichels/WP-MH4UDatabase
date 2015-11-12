@@ -42,6 +42,18 @@ namespace MH4U_Database.ViewModel
             }
         }
 
+        List<HornMelody> _melodies;
+        public List<HornMelody> Melodies
+        {
+            get { return _melodies; }
+            set
+            {
+                _melodies = value;
+                OnPropertyChanged("Melodies");
+            }
+        }
+        
+
         public WeaponDetailsViewModel(int id)
         {
             LoadData(id);
@@ -62,6 +74,9 @@ namespace MH4U_Database.ViewModel
                 if (upgrades.Count == 0) w[w.Count - 1].final = 1;
                 WeaponFamily = w;
             }
+
+            if (Melodies == null && Weapon.wtype.Equals("Hunting Horn"))
+                Melodies = await MHDatabaseHelper.GetHornMelodies(Weapon.horn_notes);
         }
 
     }
