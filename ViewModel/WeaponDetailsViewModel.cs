@@ -63,6 +63,8 @@ namespace MH4U_Database.ViewModel
         {
             if (Weapon == null)
                 Weapon = await MHDatabaseHelper.GetWeapon(id);
+            if (Melodies == null && Weapon.wtype.Equals("Hunting Horn"))
+                Melodies = await MHDatabaseHelper.GetHornMelodies(Weapon.horn_notes);
             if (Components == null)
                 Components = await MHDatabaseHelper.GetComponentsForItem(id);
             if (WeaponFamily == null)
@@ -74,9 +76,6 @@ namespace MH4U_Database.ViewModel
                 if (upgrades.Count == 0) w[w.Count - 1].final = 1;
                 WeaponFamily = w;
             }
-
-            if (Melodies == null && Weapon.wtype.Equals("Hunting Horn"))
-                Melodies = await MHDatabaseHelper.GetHornMelodies(Weapon.horn_notes);
         }
 
     }

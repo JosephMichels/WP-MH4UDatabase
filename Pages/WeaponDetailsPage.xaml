@@ -11,16 +11,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
-        <PivotItem  x:Name="songItem"
-                Margin="19,12,0,0"
-                Header="info"
-                CommonNavigationTransitionInfo.IsStaggerElement="True">
-            Test
-        </PivotItem>
         <controls:UppercaseConverter x:Key="UppercaseConverter"/>
         <controls:IntegerVisibilityConverter x:Key="IntegerVisibilityConverter"/>
         <converters:AsteriskFontWeightConverter x:Key="FontWeightConverter"/>
         <converters:NoteImageConverter x:Key="NoteImageConverter"/>
+        <DataTemplate x:Key="SongTemplate">
+            <TextBlock Style="{StaticResource ListViewItemTextBlockStyle}" Text="{Binding effect1}"/>
+        </DataTemplate>
         <DataTemplate x:Key="AncestorTemplate">
             <StackPanel>
                 <TextBlock Margin="0,6,0,3" HorizontalAlignment="Center" Text="UPGRADES TO" Visibility="{Binding final,Converter={StaticResource IntegerVisibilityConverter}}"/>

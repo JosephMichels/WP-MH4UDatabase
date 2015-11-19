@@ -64,6 +64,7 @@ namespace MH4U_Database.Pages
                 pi.Header = "songs";
                 ListView lv = new ListView();
                 lv.ItemsSource = ((WeaponDetailsViewModel)DataContext).Melodies;
+                lv.ItemTemplate = Resources["SongTemplate"] as DataTemplate;
                 pi.Content = lv;
                 pivot.Items.Insert(1, pi);
             }
