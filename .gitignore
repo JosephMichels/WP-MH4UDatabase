@@ -23,6 +23,9 @@ obj/
 
 #Visual Studio Files
 .vs/
+AppPackages/
+Package.StoreAssociation.xml
+*.user
 
 # =========================
 # Operating System Files
