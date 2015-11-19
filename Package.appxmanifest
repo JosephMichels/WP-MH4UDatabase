@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="412627dc-8849-4f0a-9c65-3547c9687f32" Publisher="CN=Joseph" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="412627dc-8849-4f0a-9c65-3547c9687f32" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="47251JoeDevStudios.MH4UDatabase" Publisher="CN=F123B7C6-07FB-4A8E-8767-BCBFCECEF665" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="cf72ccc6-af7a-43f9-9937-3d51307ec48c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>MH4U Database</DisplayName>
-    <PublisherDisplayName>Joedev Studios</PublisherDisplayName>
+    <PublisherDisplayName>JoeDev Studios</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>

@@ -61,5 +61,14 @@ namespace MH4U_Database.Pages
                 Frame.Navigate(typeof(MonsterDetailsPage), (int)hr.monster_id);
             }
         }
+
+        private void QuestClicked(object sender, ItemClickEventArgs e)
+        {
+            if(e.ClickedItem != null && e.ClickedItem is QuestRewards)
+            {
+                QuestRewards qr = (QuestRewards)e.ClickedItem;
+                Frame.Navigate(typeof(QuestDetailsPage), (int)qr.quest_id);
+            }
+        }
     }
 }

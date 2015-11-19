@@ -124,7 +124,9 @@
                 Margin="10,0,0,0"
                 Header="quest"
                 CommonNavigationTransitionInfo.IsStaggerElement="True">
-                <controls:StrechItemsListView ItemsSource="{Binding Quests}">
+                <controls:StrechItemsListView ItemsSource="{Binding Quests}"
+                                              IsItemClickEnabled="True"
+                                              ItemClick="QuestClicked">
                     <controls:StrechItemsListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
