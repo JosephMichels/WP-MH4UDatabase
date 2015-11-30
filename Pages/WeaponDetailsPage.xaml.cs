@@ -1,4 +1,5 @@
 ﻿using MH4U_Database.Common;
+using MH4U_Database.Controls;
 using MH4U_Database.Database;
 using MH4U_Database.ViewModel;
 using System;
@@ -62,7 +63,11 @@ namespace MH4U_Database.Pages
             {
                 PivotItem pi = new PivotItem();
                 pi.Header = "songs";
-                ListView lv = new ListView();
+
+                StrechItemsListView lv = new StrechItemsListView();
+                Style s = new Style(typeof(ListViewItem));
+                s.Setters.Add(new Setter(ListViewItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
+                lv.ItemContainerStyle = s;
                 lv.ItemsSource = ((WeaponDetailsViewModel)DataContext).Melodies;
                 lv.ItemTemplate = Resources["SongTemplate"] as DataTemplate;
                 pi.Content = lv;
