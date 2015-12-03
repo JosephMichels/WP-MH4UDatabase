@@ -102,6 +102,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DecorationDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,6 +177,7 @@
     <Compile Include="Converters\WeaknessFontWeightConverter.cs" />
     <Compile Include="Database\Armor.cs" />
     <Compile Include="Database\Component.cs" />
+    <Compile Include="Database\Decoration.cs" />
     <Compile Include="Database\Gathering.cs" />
     <Compile Include="Database\Habitat.cs" />
     <Compile Include="Database\HornMelody.cs" />
@@ -203,6 +208,9 @@
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\BladeWeaponList.xaml.cs">
       <DependentUpon>BladeWeaponList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DecorationDetailsPage.xaml.cs">
+      <DependentUpon>DecorationDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -246,6 +254,7 @@
     <Compile Include="ViewModel\ArmorDetailsViewModel.cs" />
     <Compile Include="ViewModel\ArmorListViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\DecorationDetailsViewModel.cs" />
     <Compile Include="ViewModel\ItemDetailsViewModel.cs" />
     <Compile Include="ViewModel\ItemListViewModel.cs" />
     <Compile Include="ViewModel\MonsterDetailsViewModel.cs" />

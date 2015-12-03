@@ -60,6 +60,8 @@ namespace MH4U_Database.Pages
                 Frame.Navigate(typeof(WeaponDetailsPage), i._id);
             else if (i.type.Equals("Armor"))
                 Frame.Navigate(typeof(ArmorDetailsPage), i._id);
+            else if (i.type.Equals("Decoration"))
+                Frame.Navigate(typeof(DecorationDetailsPage), i._id);
             else
                 Frame.Navigate(typeof(ItemDetailsPage), i._id);
         }

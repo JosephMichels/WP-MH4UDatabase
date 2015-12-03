@@ -433,7 +433,22 @@ namespace MH4U_Database.Database
             WHERE ist.skill_tree_id=? AND i.sub_type=?";
             return await _connection.QueryAsync<ItemToSkillTree>(s, id,subtype);
         }
-        
+
+        public static async Task<List<ItemToSkillTree>> GetDecorationsForSkillTree(int id)
+        {
+            //i - items
+            //ist - item_to_skill_tree
+            //st - skill_trees
+            InitializeConnection();
+            string s =
+            @"SELECT ist.item_id,ist.point_value,
+            i.name AS item_name,i.icon_name AS icon_name
+            FROM item_to_skill_tree ist
+            LEFT OUTER JOIN items i ON ist.item_id=i._id
+            WHERE ist.skill_tree_id=? AND i.type='Decoration'";
+            return await _connection.QueryAsync<ItemToSkillTree>(s, id);
+        }
+
         public static async Task<List<SkillTree>> GetAllSkillTrees()
         {
             InitializeConnection();
@@ -464,6 +479,18 @@ namespace MH4U_Database.Database
             //h - monster_habitat
             string s = @"SELECT h.*,l.name AS location_name FROM monster_habitat h LEFT OUTER JOIN locations l ON h.location_id=l._id WHERE h.monster_id=?";
             return await _connection.QueryAsync<Habitat>(s, id);
+        }
+
+        #endregion
+
+        #region Decoration Queries
+
+        public static async Task<Decoration> GetDecoration(int id)
+        {
+            InitializeConnection();
+            var result = _connection.QueryAsync<Decoration>("SELECT d.*,i.name AS item_name,i.icon_name AS icon_name,i.rarity AS item_rarity FROM decorations d JOIN items i ON i._id=d._id WHERE d._id=?", id);
+            List<Decoration> item = await result;
+            return item.FirstOrDefault<Decoration>();
         }
 
         #endregion

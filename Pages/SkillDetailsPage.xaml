@@ -127,6 +127,18 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
             </PivotItem>
+            <PivotItem
+                Margin="19,12,0,0"
+                Header="decorations"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                <ListView ItemsSource="{Binding Decorations}" ItemTemplate="{StaticResource ArmorTemplate}" IsItemClickEnabled="True" ItemClick="DecorationClicked">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </PivotItem>
         </Pivot>
     </Grid>
     <Page.BottomAppBar>

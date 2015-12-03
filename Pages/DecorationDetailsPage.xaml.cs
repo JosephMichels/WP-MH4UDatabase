@@ -25,9 +25,9 @@ namespace MH4U_Database.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SkillDetailsPage : BasePage
+    public sealed partial class DecorationDetailsPage : BasePage
     {
-        public SkillDetailsPage()
+        public DecorationDetailsPage()
         {
             this.InitializeComponent();
         }
@@ -47,28 +47,27 @@ namespace MH4U_Database.Pages
             e.PageState.Add(PageValues.SELECTED_PIVOT_INDEX, pivot.SelectedIndex);
         }
 
+        /// <summary>
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// </summary>
+        /// <param name="e">Event data that describes how this page was reached.
+        /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            DataContext = new SkillDetailsViewModel((int)e.Parameter);
+            int id = (int)e.Parameter;
+            DataContext = new DecorationDetailsViewModel(id);
             base.OnNavigatedTo(e);
         }
 
-        private void ArmorClicked(object sender, ItemClickEventArgs e)
+        private void ComponentSelected(object sender, ItemClickEventArgs e)
         {
-            if(e.ClickedItem != null && e.ClickedItem is ItemToSkillTree)
+            if (e.ClickedItem is Component)
             {
-                ItemToSkillTree its = (ItemToSkillTree)e.ClickedItem;
-                Frame.Navigate(typeof(ArmorDetailsPage), its.item_id);
+                //Navigate to the item details page.
+                Component c = (Component)e.ClickedItem;
+                Frame.Navigate(typeof(ItemDetailsPage), c.comp_item_id);
             }
         }
 
-        private void DecorationClicked(object sender, ItemClickEventArgs e)
-        {
-            if (e.ClickedItem != null && e.ClickedItem is ItemToSkillTree)
-            {
-                ItemToSkillTree its = (ItemToSkillTree)e.ClickedItem;
-                Frame.Navigate(typeof(DecorationDetailsPage), its.item_id);
-            }
-        }
     }
 }

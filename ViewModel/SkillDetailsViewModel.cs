@@ -86,6 +86,17 @@ namespace MH4U_Database.ViewModel
             }
         }
 
+        List<ItemToSkillTree> _decorations;
+        public List<ItemToSkillTree> Decorations
+        {
+            get { return _decorations; }
+            set
+            {
+                _decorations = value;
+                OnPropertyChanged("Decorations");
+            }
+        }
+
 
         public SkillDetailsViewModel(int id)
         {
@@ -110,6 +121,8 @@ namespace MH4U_Database.ViewModel
                 WaistArmor = await MHDatabaseHelper.GetArmorForSkillTree(id, "Waist");
             if (LegsArmor == null)
                 LegsArmor = await MHDatabaseHelper.GetArmorForSkillTree(id, "Legs");
+            if (Decorations == null)
+                Decorations = await MHDatabaseHelper.GetDecorationsForSkillTree(id);
         }
     }
 }
