@@ -12,7 +12,7 @@
         <Pivot Title="MH4U DATABASE">
             <PivotItem Header="about">
                 <StackPanel>
-                    <TextBlock HorizontalAlignment="Center" Text="MH4U Database V1.0" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,0,20"/>
+                    <TextBlock HorizontalAlignment="Center" Text="MH4U Database V1.1" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,0,20"/>
                     <TextBlock HorizontalAlignment="Center" Text="CONTRIBUTE" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
                     <HyperlinkButton HorizontalAlignment="Center" Click="HyperlinkButton_Click" Margin="0,0,0,20">
                         <TextBlock Foreground="{ThemeResource PhoneAccentBrush}">
@@ -32,8 +32,13 @@
             </PivotItem>
             <PivotItem Header="changelog">
                 <StackPanel>
+                    <TextBlock Text="V1.1" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,0,10"/>
+                    <TextBlock Text="-Added Songs tab for Hunting Horns" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
+                    <TextBlock Text="-Added Decoration details" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
+                    <TextBlock Text="-Added Decorations tab to skill details" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
+                    <TextBlock Text="-Fixed issue with clicking quest" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,4"/>
                     <TextBlock Text="V1.0" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,0,10"/>
-                    <TextBlock Text="Inital Release" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
+                    <TextBlock Text="-Inital Release" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
                 </StackPanel>
             </PivotItem>
         </Pivot>
