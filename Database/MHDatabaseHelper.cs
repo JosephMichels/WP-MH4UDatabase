@@ -495,6 +495,27 @@ namespace MH4U_Database.Database
 
         #endregion
 
+        #region Item Combination Queries
+
+        public static async Task<List<Combination>> GetAllCombinations()
+        {
+            InitializeConnection();
+            string s =
+                @"select i1.name AS created_item_name,c.created_item_id,i1.icon_name AS created_item_icon,
+                         i2.name AS item_1_name,i2._id AS item_1_id,i2.icon_name AS item_1_icon,
+                         i3.name AS item_2_name,i3._id AS item_2_id,i3.icon_name AS item_2_icon,
+                         c.percentage,c.amount_made_min,c.amount_made_max 
+                from combining c 
+                join items i1 on c.created_item_id=i1._id 
+                join items i2 on c.item_1_id=i2._id 
+                join items i3 on c.item_2_id=i3._id";
+            return await _connection.QueryAsync<Combination>(s);
+        }
+
+        //TODO:Get combinations for item (created + ingredient)
+
+        #endregion
+
     }
 
 }

@@ -56,6 +56,8 @@ namespace MH4U_Database.Pages
             }
             else if (e.ClickedItem == quests)
                 Frame.Navigate(typeof(QuestListPage));
+            else if (e.ClickedItem == combinations)
+                Frame.Navigate(typeof(CombinationListPage));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

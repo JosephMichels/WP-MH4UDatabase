@@ -139,6 +139,12 @@ namespace MH4U_Database.Pages
             Frame.BackStack.Clear();
         }
 
+        protected void AppBarCombinationsClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CombinationListPage));
+            Frame.BackStack.Clear();
+        }
+
         #endregion
 
     }
