@@ -32,6 +32,10 @@
             </PivotItem>
             <PivotItem Header="changelog">
                 <StackPanel>
+                    <TextBlock Text="V1.2" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,0,10"/>
+                    <TextBlock Text="-Added Combination List" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
+                    <TextBlock Text="-Most lists now remember position" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
+                    <TextBlock Text="-Fixed several skill/decoration links" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,4"/>
                     <TextBlock Text="V1.1" Style="{StaticResource ListViewItemTextBlockStyle}" Margin="0,0,0,10"/>
                     <TextBlock Text="-Added Songs tab for Hunting Horns" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
                     <TextBlock Text="-Added Decoration details" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}" Margin="20,0,0,0"/>
