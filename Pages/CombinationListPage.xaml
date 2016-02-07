@@ -46,7 +46,6 @@
                                     Text="{Binding created_item_name}"
                                     Pivot.SlideInAnimationGroup="1"
                                     VerticalAlignment="Center"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Style="{ThemeResource BodyTextBlockStyle}"
                                     />
                                 <TextBlock VerticalAlignment="Center" Margin="6,3,0,0" Text="x" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
@@ -68,7 +67,6 @@
                                     Text="{Binding item_1_name}"
                                     Pivot.SlideInAnimationGroup="1"
                                     VerticalAlignment="Center"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Style="{ThemeResource BaseTextBlockStyle}"
                                     />
                                 <Image Source="{Binding item_1_icon_path}" Width="30" Height="30" Margin="5,0,0,0"/>
@@ -85,7 +83,6 @@
                                     Text="{Binding item_2_name}"
                                     Pivot.SlideInAnimationGroup="1"
                                     VerticalAlignment="Center"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Style="{ThemeResource BaseTextBlockStyle}"
                                     />
                                 <Image Source="{Binding item_2_icon_path}" Width="30" Height="30" Margin="5,0,0,0"/>
