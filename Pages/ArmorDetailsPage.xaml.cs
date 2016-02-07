@@ -68,5 +68,15 @@ namespace MH4U_Database.Pages
                 Frame.Navigate(typeof(ItemDetailsPage), c.comp_item_id);
             }
         }
+
+        private void SkillSelected(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is ItemToSkillTree)
+            {
+                //Navigate to the item details page.
+                ItemToSkillTree c = (ItemToSkillTree)e.ClickedItem;
+                Frame.Navigate(typeof(SkillDetailsPage), c.skill_tree_id);
+            }
+        }
     }
 }
