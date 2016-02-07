@@ -11,16 +11,14 @@
 
     <Grid x:Name="LayoutRoot">
 
-        <Pivot Title="MONSTERS" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True">
+        <Pivot Title="MONSTERS" x:Name="pivot">
             <PivotItem
                 Margin="19,12,0,0"
-                Header="large"
-                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                Header="large">
                 <controls:StrechItemsListView
                     ItemsSource="{Binding Monsters}"
                     IsItemClickEnabled="True"
-                    ItemClick="MonsterClicked"
-                    ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    ItemClick="MonsterClicked">
                     <controls:StrechItemsListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,10,0,10">
@@ -34,7 +32,6 @@
                                     Text="{Binding name}"
                                     Pivot.SlideInAnimationGroup="1"
                                     VerticalAlignment="Center"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Style="{ThemeResource ListViewItemTextBlockStyle}"
                                     Margin="0,0,19,0"/>
                             </Grid>
@@ -44,13 +41,12 @@
             </PivotItem>
             <PivotItem
                 Margin="19,12,0,0"
-                Header="small"
-                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                Header="small">
+
                 <controls:StrechItemsListView
                     ItemsSource="{Binding SmallMonsters}"
                     IsItemClickEnabled="True"
-                    ItemClick="MonsterClicked"
-                    ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    ItemClick="MonsterClicked">
                     <controls:StrechItemsListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,10,0,10">
@@ -64,7 +60,6 @@
                                     Text="{Binding name}"
                                     Pivot.SlideInAnimationGroup="1"
                                     VerticalAlignment="Center"
-                                    CommonNavigationTransitionInfo.IsStaggerElement="True"
                                     Style="{ThemeResource ListViewItemTextBlockStyle}"
                                     Margin="0,0,19,0"/>
                             </Grid>

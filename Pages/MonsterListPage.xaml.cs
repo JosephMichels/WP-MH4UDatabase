@@ -31,6 +31,7 @@ namespace MH4U_Database.Pages
         {
             this.InitializeComponent();
 
+            NavigationCacheMode = NavigationCacheMode.Required;
 
             //Setup some custom routing on back button
             navigationHelper.GoBackCommand = mainPagesBackCommand;
@@ -38,8 +39,17 @@ namespace MH4U_Database.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            DataContext = new MonsterListViewModel();
+            if(DataContext == null || e.NavigationMode != NavigationMode.Back)
+                DataContext = new MonsterListViewModel();
             base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            if (e.NavigationMode == NavigationMode.Back)
+                DataContext = null;
         }
 
         private void MonsterClicked(object sender, ItemClickEventArgs e)

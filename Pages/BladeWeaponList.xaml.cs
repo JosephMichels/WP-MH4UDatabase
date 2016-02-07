@@ -34,7 +34,7 @@ namespace MH4U_Database.Pages
         public BladeWeaponList()
         {
             this.InitializeComponent();
-            
+            NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         protected override void SaveState(object sender, SaveStateEventArgs e)
@@ -67,10 +67,21 @@ namespace MH4U_Database.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            viewModel = new WeaponListViewModel((string)e.Parameter);
-            DataContext = viewModel;
-            //viewModel.PropertyChanged += ViewModel_PropertyChanged;
+            if (DataContext == null || !((WeaponListViewModel)DataContext).WeaponType.Equals((string)e.Parameter) || e.NavigationMode== NavigationMode.New)
+            {
+                viewModel = new WeaponListViewModel((string)e.Parameter);
+                DataContext = viewModel;
+            }
+
             base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            if (e.NavigationMode == NavigationMode.Back)
+                DataContext = null;
         }
 
         private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

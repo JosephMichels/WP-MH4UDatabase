@@ -28,6 +28,7 @@ namespace MH4U_Database.Pages
         {
             this.InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Required;
+            navigationHelper.GoBackCommand = mainPagesBackCommand;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
