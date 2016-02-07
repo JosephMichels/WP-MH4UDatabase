@@ -30,8 +30,24 @@ namespace MH4U_Database.Pages
         public QuestListPage()
         {
             this.InitializeComponent();
-            DataContext = new QuestListViewModel();
+            NavigationCacheMode = NavigationCacheMode.Required;
             navigationHelper.GoBackCommand = mainPagesBackCommand;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (DataContext == null)
+                this.DataContext = new QuestListViewModel(); 
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            if (e.NavigationMode == NavigationMode.Back)
+                DataContext = null;
         }
 
         private void QuestClicked(object sender, ItemClickEventArgs e)
