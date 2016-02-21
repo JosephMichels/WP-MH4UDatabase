@@ -516,6 +516,29 @@ namespace MH4U_Database.Database
 
         #endregion
 
+        #region Wyporium Queries
+
+        public static async Task<List<WyporiumTrade>> GetWyporiumTrades()
+        {
+            InitializeConnection();
+            //Wyporium w
+            //Item in
+            //Item out
+            //Quest q
+            string s =
+            @"select    w.*,
+                        in1.name AS item_in_name,in1.icon_name AS item_in_icon,
+                        out.name AS item_out_name,out.icon_name AS item_out_icon,
+                        q.name AS quest_name,q.hub AS quest_hub,q.stars AS quest_stars
+                        from wyporium w 
+                        join items in1 on w.item_in_id=in1._id 
+                        join items out on w.item_out_id=out._id 
+                        join quests q on w.unlock_quest_id=q._id";
+            return await _connection.QueryAsync<WyporiumTrade>(s);
+        }
+
+        #endregion
+
     }
 
 }

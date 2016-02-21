@@ -327,6 +327,7 @@
                 <AppBarButton x:Uid="SecondaryButton5" x:Name="SecondaryButton5" Label="Skills" Click="AppBarSkillsClicked" />
                 <AppBarButton x:Uid="SecondaryButton6" x:Name="SecondaryButton6" Label="Quests" Click="AppBarQuestsClicked" />
                 <AppBarButton x:Uid="SecondaryButton6" x:Name="SecondaryButton7" Label="Combinations" Click="AppBarCombinationsClicked" />
+                <AppBarButton x:Uid="SecondaryButton8" x:Name="SecondaryButton8" Label="Wyporium" Click="AppBarWyporiumClicked" />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

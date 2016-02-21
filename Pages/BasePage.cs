@@ -32,8 +32,8 @@ namespace MH4U_Database.Pages
             {
                 return true;
             });
-
         }
+
 
         public NavigationHelper NavigationHelper
         {
@@ -142,6 +142,12 @@ namespace MH4U_Database.Pages
         protected void AppBarCombinationsClicked(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CombinationListPage));
+            Frame.BackStack.Clear();
+        }
+
+        protected void AppBarWyporiumClicked(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(WyporiumTradeList));
             Frame.BackStack.Clear();
         }
 

@@ -154,6 +154,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\WyporiumTradeList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -201,6 +205,7 @@
     <Compile Include="Database\SkillTree.cs" />
     <Compile Include="Database\Weapon.cs" />
     <Compile Include="Database\WeaponTreeEntry.cs" />
+    <Compile Include="Database\WyporiumTrade.cs" />
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -254,6 +259,9 @@
     <Compile Include="Pages\WeaponTypePage.xaml.cs">
       <DependentUpon>WeaponTypePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WyporiumTradeList.xaml.cs">
+      <DependentUpon>WyporiumTradeList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
@@ -275,6 +283,7 @@
     <Compile Include="ViewModel\WeaponDetailsViewModel.cs" />
     <Compile Include="ViewModel\WeaponListViewModel.cs" />
     <Compile Include="ViewModel\WeaponTypeViewModel.cs" />
+    <Compile Include="ViewModel\WyporiumViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

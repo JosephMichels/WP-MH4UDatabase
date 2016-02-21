@@ -1,0 +1,82 @@
+﻿<local:BasePage
+    x:Name="rootPage"
+    x:Class="MH4U_Database.Pages.WyporiumTradeList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MH4U_Database.Pages"
+    xmlns:controls="using:MH4U_Database.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <controls:IntegerVisibilityConverter x:Key="IntegerVisibilityConverter"/>
+    </Page.Resources>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="MH4U DATABASE" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="wyporium" Margin="0,-6.5,0,20" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <controls:StrechItemsListView ItemsSource="{Binding Trades}" Grid.Row="1">
+            <controls:StrechItemsListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </controls:StrechItemsListView.ItemContainerStyle>
+            <controls:StrechItemsListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Margin="4,0,6,0" Tag="{Binding item_out_id}" Tapped="ItemTapped">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding item_out_icon_path}" Width="30" Height="30" Margin="0,0,5,0"/>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Tag="{Binding item_out_id}"
+                                    Text="{Binding item_out_name}"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                            </Grid>
+                            <TextBlock Grid.Column="1" Text="→" Margin="2,0,2,0" VerticalAlignment="Center" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                            <Grid Grid.Column="2" Margin="6,0,4,0" Tag="{Binding item_in_id}" Tapped="ItemTapped">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding item_in_icon_path}" Width="30" Height="30" Margin="0,0,5,0"/>
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Tag="{Binding item_in_id}"
+                                    Text="{Binding item_in_name}"
+                                    VerticalAlignment="Center"
+                                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                            </Grid>
+                        </Grid>
+                        <TextBlock Visibility="{Binding ElementName=rootPage,Path=DataContext.ShowUnlock,Converter={StaticResource IntegerVisibilityConverter}}" Text="{Binding quest_string}" Margin="0,0,0,6" Style="{StaticResource ListViewItemSubheaderTextBlockStyle}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </controls:StrechItemsListView.ItemTemplate>
+        </controls:StrechItemsListView>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="toggleUnlock" x:Name="toggleUnlockBtn" Label="Unlock" Icon="Permissions" Click="toggleUnlockBtn_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
+</local:BasePage>
