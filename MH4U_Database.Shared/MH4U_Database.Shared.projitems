@@ -29,6 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Database\Combination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\Component.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\Decoration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\FelyneSkill.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\Gathering.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\Habitat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Database\HornMelody.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\CombinationListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DecorationDetailsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\FelyneSkillListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ItemDetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ItemListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MonsterDetailsViewModel.cs" />

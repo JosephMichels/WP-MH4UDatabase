@@ -106,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FelyneSkillListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +186,9 @@
     <Compile Include="Pages\DecorationDetailsPage.xaml.cs">
       <DependentUpon>DecorationDetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FelyneSkillListPage.xaml.cs">
+      <DependentUpon>FelyneSkillListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -250,7 +257,7 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup />
-  <Import Project="MH4U_Database.Shared\MH4U_Database.Shared.projitems" Label="Shared" />
+  <Import Project="..\MH4U_Database.Shared\MH4U_Database.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

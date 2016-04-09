@@ -60,6 +60,8 @@ namespace MH4U_Database.Pages
                 Frame.Navigate(typeof(CombinationListPage));
             else if (e.ClickedItem == wyporium)
                 Frame.Navigate(typeof(WyporiumTradeList));
+            else if (e.ClickedItem == felyneSkills)
+                Frame.Navigate(typeof(FelyneSkillListPage));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

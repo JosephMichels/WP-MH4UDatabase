@@ -539,6 +539,18 @@ namespace MH4U_Database.Database
 
         #endregion
 
+        #region Felyne Skill Queries
+
+        public static async Task<List<FelyneSkill>> GetFelyneSkills()
+        {
+            InitializeConnection();
+            string s =
+            @"select * from felyne_skills";
+            return await _connection.QueryAsync<FelyneSkill>(s);
+        }
+
+        #endregion
+
     }
 
 }
