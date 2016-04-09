@@ -9,7 +9,7 @@
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
-    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxShowAllApps>True</AppxShowAllApps>
     <AppxBuildConfigurationSelection>arm</AppxBuildConfigurationSelection>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">

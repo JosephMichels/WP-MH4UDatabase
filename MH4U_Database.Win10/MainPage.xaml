@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="App1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:models="using:App1.ViewModel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Name="NavigationEntryTemplate" x:DataType="models:NavigationEntry">
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
+                <Image Width="40" Margin="0,0,5,0" Source="{x:Bind IconPath}"/>
+                <TextBlock VerticalAlignment="Center" Text="{x:Bind Name}" Style="{StaticResource BodyTextBlockStyle}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView DisplayMode="Inline"
+                   IsPaneOpen="True"
+                   OpenPaneLength="256">
+            <SplitView.Pane>
+                <Grid Grid.Row="1" x:Name="ContentRoot">
+                    <ListView ItemClick="ListView_ItemClick" IsItemClickEnabled="True" ItemsSource="{Binding NavigationEntries}" ItemTemplate="{StaticResource NavigationEntryTemplate}">
+                
+                    </ListView>
+                </Grid>
+            </SplitView.Pane>
+            <Frame x:Name="rootFrame"
+                   Navigated="FrameNavigatedToPage"/>
+        </SplitView>
+    </Grid>
+</Page>
