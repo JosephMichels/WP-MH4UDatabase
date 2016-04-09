@@ -250,7 +250,7 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup />
-  <Import Project="..\MH4U_Database.Shared\MH4U_Database.Shared.projitems" Label="Shared" />
+  <Import Project="MH4U_Database.Shared\MH4U_Database.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

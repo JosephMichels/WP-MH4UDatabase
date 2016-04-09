@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MH4U_Database", "MH4U_Datab
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MH4U_Database", "MH4U_Database", "{0A41AE65-0451-4431-9E9B-0EF8EF712095}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MH4U_Database.Shared", "MH4U_Database.Shared.shproj", "{70496D3D-A0B4-40FE-A40F-0CE9EDEC8DC8}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MH4U_Database.Shared", "MH4U_Database.Shared\MH4U_Database.Shared.shproj", "{70496D3D-A0B4-40FE-A40F-0CE9EDEC8DC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MH4U_Database_Win10", "MH4U_Database.Win10\MH4U_Database_Win10.csproj", "{E7619689-C13F-4FC1-8511-82EE8A5FF23E}"
 EndProject
