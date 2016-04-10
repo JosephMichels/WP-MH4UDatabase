@@ -20,7 +20,7 @@
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="MH4U DATABASE" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="wyporium" Margin="0,-6.5,0,20" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="food skills" Margin="0,-6.5,0,20" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <controls:StrechItemsListView ItemsSource="{Binding Skills}" Grid.Row="1">
@@ -34,7 +34,7 @@
                     <TextBlock Grid.Column="1"
                                     Text="{Binding skill_name}"
                                     VerticalAlignment="Center"
-                                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                                    Style="{StaticResource ListViewItemTextBlockStyle}"/>
                 </DataTemplate>
             </controls:StrechItemsListView.ItemTemplate>
         </controls:StrechItemsListView>

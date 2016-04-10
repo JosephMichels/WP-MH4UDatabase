@@ -1,35 +1,87 @@
 ﻿<Page
-    x:Class="App1.MainPage"
+    x:Class="MH4U_Database.AppShell"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:App1"
+    xmlns:local="using:MH4U_Database"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:models="using:App1.ViewModel"
+    xmlns:models="using:MH4U_Database.ViewModel"
+    xmlns:styles="using:MH4U_Database.Styles"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Page.Resources>
         <DataTemplate x:Name="NavigationEntryTemplate" x:DataType="models:NavigationEntry">
-            <StackPanel Orientation="Horizontal" Margin="0,5,0,5">
-                <Image Width="40" Margin="0,0,5,0" Source="{x:Bind IconPath}"/>
-                <TextBlock VerticalAlignment="Center" Text="{x:Bind Name}" Style="{StaticResource BodyTextBlockStyle}"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!-- Showing a ToolTip and the Label is redundant.  We put the ToolTip on the icon.
+                     It appears when the user hovers over the icon, but not the label which provides
+                     value when the SplitView is 'Compact' while reducing the likelihood of showing
+                     redundant information when the label is shown.-->
+                <Image Width="30" VerticalAlignment="Center" HorizontalAlignment="Center" Source="{x:Bind IconPath}" ToolTipService.ToolTip="{x:Bind Name}"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind Name}" Style="{StaticResource BodyTextBlockStyle}"/>
+            </Grid>
         </DataTemplate>
     </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView DisplayMode="Inline"
+
+        <!-- Adaptive triggers -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <SplitView  x:Name="RootSplitView" 
+                    DisplayMode="Inline"
                    IsPaneOpen="True"
                    OpenPaneLength="256">
             <SplitView.Pane>
-                <Grid Grid.Row="1" x:Name="ContentRoot">
-                    <ListView ItemClick="ListView_ItemClick" IsItemClickEnabled="True" ItemsSource="{Binding NavigationEntries}" ItemTemplate="{StaticResource NavigationEntryTemplate}">
+                <Grid Grid.Row="1" x:Name="ContentRoot" Margin="0,48,0,0">
+                    <ListView Margin="0,0,0,0" ItemClick="ListView_ItemClick" IsItemClickEnabled="True" ItemsSource="{Binding NavigationEntries}" ItemTemplate="{StaticResource NavigationEntryTemplate}" ItemContainerStyle="{StaticResource NavMenuItemContainerStyle}">
                 
                     </ListView>
                 </Grid>
             </SplitView.Pane>
             <Frame x:Name="rootFrame"
-                   Navigated="FrameNavigatedToPage"/>
+                   Navigated="FrameNavigatedToPage">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo/>
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
         </SplitView>
+        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
+        <ToggleButton x:Name="TogglePaneButton"
+                      TabIndex="1"
+                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
+                      Unchecked="TogglePaneButton_Checked"
+                      AutomationProperties.Name="Menu"
+                      ToolTipService.ToolTip="Menu" />
     </Grid>
 </Page>

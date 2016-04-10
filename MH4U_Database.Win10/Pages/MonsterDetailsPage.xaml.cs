@@ -22,28 +22,36 @@ namespace MH4U_Database.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MonsterListPage : Page
+    public sealed partial class MonsterDetailsPage : Page
     {
-        public MonsterListPage()
+        public MonsterDetailsPage()
         {
             this.InitializeComponent();
-            NavigationCacheMode = NavigationCacheMode.Required;
-        }
-
-        private void MonsterClicked(object sender, ItemClickEventArgs e)
-        {
-            if (e.ClickedItem is Monster)
-            {
-                //NavigationEntry entry = (NavigationEntry)e.ClickedItem;
-                Frame.Navigate(typeof(MonsterDetailsPage),((Monster)e.ClickedItem)._id);
-            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (DataContext == null || e.NavigationMode != NavigationMode.Back)
-                DataContext = new MonsterListViewModel();
+            DataContext = new MonsterDetailsViewModel((int)e.Parameter);
             base.OnNavigatedTo(e);
         }
+
+        private void ItemClicked(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is Monster)
+            {
+                //NavigationEntry entry = (NavigationEntry)e.ClickedItem;
+                Frame.Navigate(typeof(MonsterDetailsPage), ((Monster)e.ClickedItem)._id);
+            }
+        }
+
+        private void QuestClicked(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is Monster)
+            {
+                //NavigationEntry entry = (NavigationEntry)e.ClickedItem;
+                Frame.Navigate(typeof(MonsterDetailsPage), ((Monster)e.ClickedItem)._id);
+            }
+        }
+
     }
 }
